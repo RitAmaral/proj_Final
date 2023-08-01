@@ -21,7 +21,6 @@
       h1{
         border-bottom: 2px solid #EB93C6;
         padding: 10px;
-        text-shadow: 5px 5px 10px #EB93C6;
       }
       /* Design do hover / quando passamos por cima do h1 e do cabeçalho da tabela */ 
       .hover:hover{
@@ -34,12 +33,43 @@
         padding: 1px;
       }
 
+      /* Design do botão back to welcome page */
+      .back{
+            position:absolute;
+            top:0;
+            right:0;
+            padding: 20px;
+            text-decoration: none;
+        }
+
+        .btnback{
+            font-size:12px;
+            border: 2px solid #191970;
+            text-decoration: none;
+            color: #fff;
+            background-color: #191970;
+            padding: 7px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .btnback:hover{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            text-decoration: none;
+            background-color: white;
+            color: #191970;
+        }
+
     </style>
   </head>
   <body>
     <main class="container">
 
-        <center><div class="hover"><h1>Utilizadores na nossa base de dados</h1></div></center>
+      <div class="back">
+          <a type="button" href="/" class="btnback">Voltar à Homepage</a>   
+      </div>
+
+        <center><h1>Utilizadores na nossa base de dados</h1></center>
         <br>
         <table class="table">
             <thead>

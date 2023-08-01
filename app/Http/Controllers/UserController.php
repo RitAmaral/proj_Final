@@ -6,6 +6,9 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\Comentario;
+
 class UserController extends Controller
 {
     //
@@ -106,5 +109,17 @@ class UserController extends Controller
         $user=User::find($id); //vai buscar e destruir o user que clicarmos com o id correspondente
         $user->delete();
         return redirect() -> route('user.index');
+    }
+
+    //método necessário para exibir a página do perfil
+    public function perfil()
+    {
+        // Obter o utilizador logado
+        $user = Auth::user();
+
+        // Obter os comentários do utilizador para os filmes
+        $comentarios = Comentario::where('id', $user->id)->get();
+
+        return view('user.perfil', compact('user', 'comentarios'));
     }
 }

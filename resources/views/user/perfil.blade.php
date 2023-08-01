@@ -1,4 +1,5 @@
-<!-- Esta página é o que vemos quando carregamos no botão ver da página users -->
+<!-- Ir à pagina https://getbootstrap.com/docs/4.2/getting-started/introduction/ (v4.2), copiar e colocar o starter template em baixo-->
+<!--o link deste site é: http://localhost:8000/users -->
 
 <!doctype html>
 <html lang="en">
@@ -16,16 +17,20 @@
       body{
         background-color: lightblue;
       }
-      
+
       h1{
         border-bottom: 2px solid #EB93C6;
         padding: 10px;
-        text-shadow: 5px 5px 10px #EB93C6;
       }
-      /* Design do hover / quando passamos por cima do h1 */
+      /* Design do hover / quando passamos por cima do h1 e do cabeçalho da tabela */ 
       .hover:hover{
-          background-color:#EB93C6;
-          padding: 1px;
+        background-color:#EB93C6;
+        padding: 1px;
+      }
+      /* Design do hover2 / quando passamos por cima da tabela */ 
+      .hover2:hover{
+        background-color:#fff;
+        padding: 1px;
       }
 
       /* Design do botão back to welcome page */
@@ -54,44 +59,48 @@
             background-color: white;
             color: #191970;
         }
+      
+      h2{
+        color: #EB93C6;
+      }
 
     </style>
   </head>
-  <body>
-    <main class="container">
 
+  <body>
+    <main>
       <div class="back">
-          <a type="button" href="{{ route('user.index') }}" class="btnback">Voltar aos Utilizadores</a>   
+          <a type="button" href="/" class="btnback">Voltar à Homepage</a>   
       </div>
 
-        <center><div class="hover"><h1>Edição de registo</h1></div></center>
-        <!-- métodos: get ou post: get aparece no endereço os campos; o post não aparece-->
-        <form method="post" action="{{route('user.update', $user->id)}}"> <!-- action é como href, mas no form só usamos action-->
-            <!-- Método para validar se os dados estão a sair deste formulário: csrf -->
-            @csrf <!-- para protecção -> link: https://laravel.com/docs/10.x/csrf -->
-            @method ('put') <!-- o método no html é post, mas no php/laravel é 'put'-->
-            <div class="form-group">
-                <label for="name">Nome</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}"> <!--"name" é o nome do campo da base de dados-->
-                @error('name')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$user->email}}">
-                @error('email')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-                @enderror
-            </div>
-        <button type="submit" class="btn btn-primary">Gravar alteração</button>
-        </form>
+        <div class="container">
+          <center><h1>Perfil do Utilizador</h1></center>
 
+            <h2>Informações do Utilizador</h2>
+            <p><b>Nome:</b> {{ $user->name }}</p>
+            <p><b>Email:</b> {{ $user->email }}</p>
+
+            <br>
+
+            <h2>Histórico de Comentários</h2>
+            @if ($comentarios->isEmpty())
+                <p>Nenhum comentário encontrado.</p>
+            @else
+                <ul class="list-unstyled">
+                    @foreach ($comentarios as $comentario)
+                        <li class="comentario-item">
+                            <p><b>Data e Hora:</b> {{ $comentario->data_hora }}</p>
+                            <p><b>Filme:</b> <a href="{{ route('filme.show', $comentario->id_filme) }}" target="_blank">{{ $comentario->filme->titulo }}</a></p>
+                            <p><b>Comentário:</b> {{ $comentario->comentario }}</p>
+                            <br>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+          
+        </div>
     </main>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

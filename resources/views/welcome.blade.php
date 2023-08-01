@@ -130,12 +130,15 @@
                         @endif
                     @endauth
 
-                    @auth
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btnlogin">Logout</button>
-                        </form>
-                    @endauth
+                    <div class="login" style="display: flex;">
+                        @auth
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btnlogin">Logout</button>
+                            </form>
+                            <a href="{{ route('perfil') }}" class="btnregister" style="margin-left: 10px;">Perfil</a>
+                        @endauth
+                    </div>
                 </div>
         @endif
         
