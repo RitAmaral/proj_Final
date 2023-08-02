@@ -114,10 +114,10 @@ class UserController extends Controller
     //método necessário para exibir a página do perfil
     public function perfil()
     {
-        // Obter o utilizador logado
+        //ver se o user tem login feito
         $user = Auth::user();
 
-        // Obter os comentários do utilizador para os filmes
+        //obter comentários do utilizador para os filmes
         $comentarios = Comentario::where('id', $user->id)->get();
 
         return view('user.perfil', compact('user', 'comentarios'));

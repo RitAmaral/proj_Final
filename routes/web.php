@@ -97,5 +97,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/comentarios', [App\Http\Controllers\ComentarioController::class, 'store'])->name('comentarios.store'); });
 
 //rota para perfil do user
-//Route::get('/perfil', 'UserController@perfil')->name('perfil')->middleware('auth');
 Route::get('/perfil', [App\Http\Controllers\UserController::class, 'perfil'])->name('perfil')->middleware('auth');

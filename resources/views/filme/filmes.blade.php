@@ -21,32 +21,45 @@
             padding: 10px;
             color: black;
         }
+
         /* Design do botão back to welcome page */
-        .back{
-            position:absolute;
-            top:0;
-            right:0;
+        .back {
+            position: absolute;
+            top: 0;
+            right: 0;
             padding: 20px;
             text-decoration: none;
         }
 
-        .btnback{
-            font-size:12px;
+        .btnback {
             border: 2px solid #191970;
-            text-decoration: none;
-            color: #fff;
-            background-color: #191970;
-            padding: 7px;
             border-radius: 5px;
             margin-right: 10px;
+            padding: 7px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #191970;
+            background-color: white;
         }
 
-        .btnback:hover{
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-            text-decoration: none;
-            background-color: white;
-            color: #191970;
+         /* Design do icon da homepage*/
+        .icon {
+            width: 24px; /* Defina a largura do ícone */
+            height: 24px; /* Defina a altura do ícone */
+            background-image: url("{{ asset('icons/homepage.png') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-right: 5px;
         }
+
+        .btnback:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+            text-decoration: none;
+            background-color: #191970;
+            color: white;
+        }
+       
 
         h1{
             color: white;
@@ -129,9 +142,11 @@
     </head>
     <body>
         <main>
-            <div class="back">
-                <a type="button" href="/" class="btnback">Voltar à Homepage</a>   
-            </div>
+        <div class="back">
+            <a type="button" href="/" class="btnback">
+                <i class="icon"></i>               
+            </a>
+        </div>
 
             <center>
                 <h1>A nossa base de dados de filmes</h1>
