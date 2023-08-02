@@ -137,6 +137,27 @@
             background-color: #fff;
             color: #191970;
         }
+
+        /* botao voltar ao topo*/
+        .topo {
+            position: fixed;
+            bottom: 20px; 
+            left: 20px;
+            z-index: 9999; 
+            padding:5px;
+            background-color: white;
+            color: #191970;
+            border-radius: 5px;
+            font-size: 16px;
+            border: 2px solid #191970;
+        }
+        
+        .topo:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+            text-decoration: none;
+            background-color: #191970;
+            color: white;
+        }
         
         </style>
     </head>
@@ -288,7 +309,7 @@
                 </table>
             </center>
             <br>
-            <a type='button' href="#top" class="btnback">Voltar ao topo</a> <!-- botão voltar ao topo-->
+            <a type='button' href="#top" class="topo">↑</a> <!-- botão voltar ao topo-->
 
 
             <!-- Javascript - necessário para a pesquisa de filmes por titulo ir diminuindo os filmes presentes na tabela -->
