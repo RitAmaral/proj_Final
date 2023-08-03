@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Filme; //importar o Modelo Filme
 use Illuminate\Support\Facades\DB; //importar
 use App\Models\Comentario;
-
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -174,10 +174,17 @@ class HomeController extends Controller
         
         return view('filme.filmes_show', $dados);
 
-        //Para mostrar a imagem de cada filme:
+        //para mostrar a imagem de cada filme:
         $filme = Filme::find($id);
-        if ($filme) { //se filme for encontrado:
-            return view('filme.show', compact('filme')); //retorna a view "filme.show" e passa o objeto $filme para a view
+
+        //verificar se o user está logado
+        $user = Auth::user();
+
+        //formulário de classificação se o user estiver logado
+        if ($user) {
+            return view('filme.show', compact('filme'))->with('filme', 'user');
+        } else {
+            return view('filme.show', compact('filme'));
         }
     }
 

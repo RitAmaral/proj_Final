@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use Illuminate\Support\Facades\App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Auth;
 
 //use Illuminate\Support\Facades\DB; //importar
@@ -101,3 +100,8 @@ Route::get('/perfil', [App\Http\Controllers\UserController::class, 'perfil'])->n
 
 //rota para adicionar interveniente preferido
 Route::post('/adicionar-interv-preferido', [App\Http\Controllers\IntervenienteController::class, 'adicionarIntervenientePreferido'])->name('adicionar.interv.preferido');
+
+//rota para ratings do user
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('/rating', [App\Http\Controllers\UserRatingController::class, 'store']);
+});

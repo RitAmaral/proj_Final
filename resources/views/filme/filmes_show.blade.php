@@ -6,7 +6,7 @@
 
         <link rel="icon" href="{{ asset('icons/movieicon.png') }}"> <!-- icon do website-->
 
-        <title>Sugestões de Filmes</title>
+        <title>Detalhes do Filme</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -114,6 +114,32 @@
             <h1>Detalhes do Filme</h1>
         </center>
         <br>
+
+        <!-- Verifique se o usuário está autenticado antes de exibir o formulário -->
+        @auth
+            <h2>Classificação:</h2>
+            <form action="{{ url('/rating') }}" method="post">
+                @csrf
+                <input type="hidden" name="id_filme" value="{{ $filmes->id_filme }}">
+                <input type="hidden" name="id" value="{{ auth()->id() }}">
+
+                <label for="user_rating">Selecione uma classificação:</label>
+                <select name="user_rating" id="user_rating">
+                    <option value="1">☆</option>
+                    <option value="2">☆☆</option>
+                    <option value="3">☆☆☆</option>
+                    <option value="4">☆☆☆☆</option>
+                    <option value="5">☆☆☆☆☆</option>
+                    <option value="6">☆☆☆☆☆☆</option>
+                    <option value="7">☆☆☆☆☆☆☆</option>
+                    <option value="8">☆☆☆☆☆☆☆☆</option>
+                    <option value="9">☆☆☆☆☆☆☆☆☆</option>
+                    <option value="10">☆☆☆☆☆☆☆☆☆☆</option>
+                </select>
+
+                <button type="submit">Enviar Classificação</button>
+            </form>
+        @endauth
 
         <!-- Title Card -->
         <center>

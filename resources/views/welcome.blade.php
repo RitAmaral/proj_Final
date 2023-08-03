@@ -22,7 +22,7 @@
             padding: 10px;
             color: white;
         }
-        /* Design do botão login */
+        /* Design do botão login/logout */
         .login{
             position:fixed;
             top:0;
@@ -47,13 +47,13 @@
             text-decoration: none;
             color: #191970;
         }
-        /* Design do Botão registar */
+        /* Design do Botão registar/perfil */
         .btnregister{
             font-size:20px;
-            border: 2px solid #FFC0CB;
+            border: 2px solid #E4A063;
             text-decoration: none;
             color: #fff;
-            background-color: #FFC0CB;
+            background-color: #E4A063;
             padding: 7px;
             border-radius: 5px; 
         }

@@ -6,7 +6,7 @@
 
         <link rel="icon" href="{{ asset('icons/movieicon.png') }}"> <!-- icon do website-->
 
-        <title>Sugestões de Filmes</title>
+        <title>Editar Filme</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

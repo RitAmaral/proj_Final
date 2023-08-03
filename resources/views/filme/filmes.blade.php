@@ -7,7 +7,7 @@
 
         <link rel="icon" href="{{ asset('icons/movieicon.png') }}"> <!-- icon do website-->
 
-        <title>Sugestões de Filmes</title>
+        <title>Filmes Homepage</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -271,7 +271,7 @@
                         <th scope="col">Género</th>
                         <th scope="col">Rating ⭐</th>
                         <th scope="col">Link IMDb</th>
-                        <th colspan=3><center>Ações 👀 🚧 ❌</th></center>
+                        <th colspan=3><center>Ações</th></center>
                         </tr>
                     </thead>
                     <tbody>
