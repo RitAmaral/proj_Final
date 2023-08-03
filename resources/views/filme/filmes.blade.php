@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="icon" href="{{ asset('icons/movieicon.png') }}"> <!-- icon do website-->
+
         <title>Sugestões de Filmes</title>
 
         <!-- Fonts -->
@@ -49,8 +51,7 @@
             height: 24px; /* Defina a altura do ícone */
             background-image: url("{{ asset('icons/homepage.png') }}");
             background-size: cover;
-            background-repeat: no-repeat;
-            margin-right: 5px;
+            background-repeat: no-repeat;          
         }
 
         .btnback:hover {
@@ -64,6 +65,8 @@
         h1{
             color: white;
             font-size: 40px;
+            border-bottom: 2px solid white;
+            padding: 10px;
         }
 
         /* Design do hover / quando passamos por cima do cabeçalho da tabela */ 
@@ -134,7 +137,7 @@
         }
 
         .add:hover{
-            background-color: #fff;
+            background-color: #FFF775;
             color: #191970;
         }
 
@@ -260,15 +263,15 @@
                 <table class="table">
                     <thead>
                         <tr class="hover">
-                        <th scope="col">Título</th>
-                        <th scope="col">Ano</th>
+                        <th scope="col">Título 🎥</th>
+                        <th scope="col">Ano 📅</th>
                         <th scope="col">Classificação</th>
-                        <th scope="col">País</th>
+                        <th scope="col">País 🌍</th>
                         <th scope="col">Plataforma</th>
                         <th scope="col">Género</th>
-                        <th scope="col">Rating</th>
+                        <th scope="col">Rating ⭐</th>
                         <th scope="col">Link IMDb</th>
-                        <th colspan=3><center>Ações</th></center>
+                        <th colspan=3><center>Ações 👀 🚧 ❌</th></center>
                         </tr>
                     </thead>
                     <tbody>

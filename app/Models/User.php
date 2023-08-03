@@ -43,4 +43,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function intervenientesPreferidos()
+    {
+        return $this->belongsToMany(Interveniente::class, 'tb_interv_preferidos', 'id', 'id_interveniente');
+    }
 }

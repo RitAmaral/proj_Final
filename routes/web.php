@@ -98,3 +98,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 //rota para perfil do user
 Route::get('/perfil', [App\Http\Controllers\UserController::class, 'perfil'])->name('perfil')->middleware('auth');
+
+//rota para adicionar interveniente preferido
+Route::post('/adicionar-interv-preferido', [App\Http\Controllers\IntervenienteController::class, 'adicionarIntervenientePreferido'])->name('adicionar.interv.preferido');

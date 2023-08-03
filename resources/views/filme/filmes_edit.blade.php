@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="icon" href="{{ asset('icons/movieicon.png') }}"> <!-- icon do website-->
+
         <title>Sugestões de Filmes</title>
 
         <!-- Fonts -->
@@ -49,7 +51,6 @@
             background-image: url("{{ asset('icons/moviespage.png') }}");
             background-size: cover;
             background-repeat: no-repeat;
-            margin-right: 5px;
         }
 
         .btnback:hover {
@@ -62,6 +63,8 @@
         h1{
             color: white;
             font-size: 40px;
+            border-bottom: 2px solid white;
+            padding: 10px;
         }
         /* Design do botão editar */
         .btnedit{

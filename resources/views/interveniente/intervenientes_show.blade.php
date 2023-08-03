@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="icon" href="{{ asset('icons/movieicon.png') }}"> <!-- icon do website-->
+
         <title>Sugestões de Filmes</title>
 
         <!-- Fonts -->
@@ -49,7 +51,6 @@
             background-image: url("{{ asset('icons/moviestar.png') }}");
             background-size: cover;
             background-repeat: no-repeat;
-            margin-right: 5px;
         }
 
         .btnback:hover {
@@ -84,12 +85,54 @@
         h1{
             color: white;
             font-size: 40px;
+            border-bottom: 2px solid white;
+            padding: 10px;
         }
+
         h2{
             color: white;
         }
+
         p{
             font-size: 26px;
+        }
+
+        /* Design do botão Adicionar Filme */
+        .pulser {
+            width: fit-content;
+            background: #191970;
+            border-radius: 5px;
+            position: relative;
+            color: #fff;
+        }
+
+        .pulser::after {
+            animation: pulse 4000ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite;
+        }
+
+        @keyframes pulse {
+            0% {opacity: 0;}
+            50% {
+            transform: scale(1.4);
+            opacity: 0.4;
+            }
+        }
+
+        .pulser::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #191970;
+            border-radius: 5px;
+            z-index: -1;
+        }
+
+        .add:hover{
+            background-color: #fff;
+            color: #191970;
         }
         
         </style>
@@ -105,6 +148,16 @@
             <h1>Detalhes do Interveniente</h1>
         </center>
         <br>
+
+        @auth
+            <form action="{{ route('adicionar.interv.preferido') }}" method="post">
+                @csrf
+                <input type="hidden" name="id_interveniente" value="{{ $interveniente->id_interveniente }}">
+                <center><button type="submit" class="btn add pulser">Adicionar aos favoritos ⭐</button></center>
+            </form>
+        @endauth
+        <br>
+
         <center>
             <h2>Filmes em que {{ $interveniente->interveniente }} participou:</h2>
             

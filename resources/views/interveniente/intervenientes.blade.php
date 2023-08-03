@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="icon" href="{{ asset('icons/movieicon.png') }}"> <!-- icon do website-->
+
         <title>Sugestões de Filmes</title>
 
         <!-- Fonts -->
@@ -50,7 +52,6 @@
             background-image: url("{{ asset('icons/homepage.png') }}");
             background-size: cover;
             background-repeat: no-repeat;
-            margin-right: 5px;
         }
 
         .btnback:hover {
@@ -63,6 +64,8 @@
         h1{
             color: white;
             font-size: 40px;
+            border-bottom: 2px solid white;
+            padding: 10px;
         }
 
         /* Design do hover / quando passamos por cima do cabeçalho da tabela */ 
@@ -206,10 +209,10 @@
                 <table class="table">
                     <thead>
                         <tr class="hover">
-                        <th scope="col">Interveniente</th>
-                        <th scope="col">País</th>
+                        <th scope="col">Interveniente 👤</th>
+                        <th scope="col">País 🌍</th>
                         <th scope="col">Função</th>
-                        <th scope="col">Ver</th>
+                        <th scope="col">Ver 👀</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Interveniente;
+use App\Models\IntervPreferido;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Filme; //importar
 
@@ -58,5 +60,29 @@ class IntervenienteController extends Controller
         })->get();
         
         return view('interveniente.intervenientes_show', compact('interveniente', 'filmes'));
+    }
+
+    //método necessário para adicionar e exibir intervenientes preferidos no perfil
+    public function adicionarIntervenientePreferido(Request $request)
+    {
+        $user = Auth::user();
+
+        if ($user) {
+            $id_interveniente = $request->input('id_interveniente');
+
+            // Verifique se o ID do interveniente não é nulo antes de criar o interveniente preferido
+            if (!empty($id_interveniente)) {
+                IntervPreferido::create([
+                    'id' => $user->id,
+                    'id_interveniente' => $id_interveniente,
+                ]);
+
+                return redirect()->back()->with('success', 'Interveniente adicionado aos preferidos com sucesso!');
+            } else {
+                return redirect()->back()->with('error', 'ID do interveniente não especificado.');
+            }
+        } else {
+            return redirect()->route('login')->with('error', 'Precisa de fazer login para adicionar um interveniente preferido.');
+        }
     }
 }

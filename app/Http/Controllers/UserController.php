@@ -8,13 +8,12 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comentario;
+use App\Models\IntervPreferido;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
-    //
-    /**
-     * Display a listing of the resource.
-     */
+    //Display a listing of the resource.
     public function index()
     {
         //------Vamos criar uma variável: $user
@@ -37,9 +36,9 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(\App\Http\Requests\User\UserStoreRequest $request) //guarda na basa de dados; 2ªForma: o request valida os dados; como criamos pasta Request, trocar o nome para UserStoreRequest, e colocar o caminho onde ele UserStore está
+    public function store(\App\Http\Requests\User\UserStoreRequest $request) //guarda na basa de dados; 2ªForma: o request valida os dados; como criamos pasta Request, trocar o nome para UserStoreRequest, e colocar o caminho onde UserStore está
     {
-        /* //-------------------1ª Forma de Validação de dados--------a 2ª forma é criar pasta Request, e escrever isto no ficheiro criado na pasta Request----------
+        /* 2ª forma é criar pasta Request, e escrever isto no ficheiro criado na pasta Request----------
         $request->validate([
             'name'=>'string|required', //podemos escrever isto de 2 formas. Ou esta, ou a de baixo.
             //'name'=>['string','required']
@@ -96,7 +95,7 @@ class UserController extends Controller
         $user->update($data);
 
         //return redirect() ->back(); //depois de gravar, volta para trás. 
-        return redirect() ->route('user.index');
+        return Redirect::to('/');
     }
 
     /**
@@ -117,9 +116,13 @@ class UserController extends Controller
         //ver se o user tem login feito
         $user = Auth::user();
 
-        //obter comentários do utilizador para os filmes
+        //obter comentários do utilizador em cada filmes, e exibir no perfil
         $comentarios = Comentario::where('id', $user->id)->get();
 
-        return view('user.perfil', compact('user', 'comentarios'));
+        //obter intervenientes preferidos do utilizador, e exibir no perfil       
+        $intervenientesPreferidos = $user->intervPreferidos;
+
+        return view('user.perfil', compact('user', 'comentarios', 'intervenientesPreferidos'));
     }
+
 }

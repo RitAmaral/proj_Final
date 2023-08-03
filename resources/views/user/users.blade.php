@@ -8,6 +8,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="icon" href="{{ asset('icons/movieicon.png') }}"> <!-- icon do website-->
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
@@ -61,7 +63,6 @@
             background-image: url("{{ asset('icons/homepage.png') }}");
             background-size: cover;
             background-repeat: no-repeat;
-            margin-right: 5px;
         }
 
         .btnback:hover {
@@ -87,11 +88,11 @@
         <table class="table">
             <thead>
                 <tr class="hover">
-                    <th scope="col">Id</th>
+                    <th scope="col">🆔</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">Email 📧</th>
                     <th scope="col">Criado em</th>
-                    <th colspan=3><center>Botões de acção</center></th>
+                    <th colspan=3><center>Ações 👀 🚧 ❌</center></th>
                 </tr>
             </thead>
             <tbody>
