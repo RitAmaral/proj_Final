@@ -212,7 +212,7 @@
                         <th scope="col">Interveniente 👤</th>
                         <th scope="col">País 🌍</th>
                         <th scope="col">Função</th>
-                        <th scope="col">Ver 👀</th>
+                        <th scope="col">Ver</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -226,7 +226,7 @@
                                 @endif
                             </td>
                             <td>
-                            <a type='button' class="btn btn-success" href="{{ route('interveniente.show', $interveniente->id_interveniente)}}">Ver</a> 
+                            <a type='button' class="btn btn-success" href="{{ route('interveniente.show', $interveniente->id_interveniente)}}">🛈</a> 
                             </td> 
                         </tr>
                     @endforeach

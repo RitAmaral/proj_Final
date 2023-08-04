@@ -68,8 +68,16 @@ class HomeController extends Controller
         }
         
         $plataformas = DB::table('tb_plataformas')->get(); //criar esta variável, para passar para a view, onde vamos querer filtrar filmes por plataforma
-        $classificacoes = DB::table('tb_classificacoes')->get();
-        $paises = DB::table('tb_paises')->get();
+        $classificacoes = DB::table('tb_classificacoes')->get(); //para filtrar por classificações
+        $paises = DB::table('tb_paises')->get(); //para filtrar tb por paises
+        $usersrating = DB::table('tb_users_rating')->get(); //para filtrar por user rating, com a média calculada embaixo 
+
+        //calcular a média dos ratings dos users
+        foreach ($filmes as $filme) {
+            $id_filme = $filme->id_filme;
+            $averageUserRating = DB::table('tb_users_rating')->where('id_filme', $id_filme)->avg('user_rating');
+            $filme->averageUserRating = $averageUserRating;
+        }
             
         //criar array associativo para passar todas as informações/variáveis para a view:
             $dados = [
@@ -80,6 +88,8 @@ class HomeController extends Controller
                 'plataformas' => $plataformas,
                 'classificacoes' => $classificacoes,
                 'paises' => $paises,
+                'usersrating' => $usersrating,
+                'averageUserRating' =>  $averageUserRating,
             ];
 
         return view('filme.filmes', $dados);
@@ -163,6 +173,15 @@ class HomeController extends Controller
             ->where('tb_comentarios.id_filme', $id_filme)
             ->select('tb_comentarios.*', 'users.name')
             ->get();
+        
+        //para ver avg user rating em cada filme
+        $usersrating = DB::table('tb_users_rating')
+            ->join('users', 'tb_users_rating.id', '=', 'users.id')
+            ->where('tb_users_rating.id_filme', $id_filme)
+            ->select('tb_users_rating.*', 'user_rating')
+            ->get();
+
+            $averageRating = $this->calculateAverageRating($id_filme); //nota: a função calculateAverageRating está no fim desta página
             
         //criar array associativo para passar todas as informações para a view:
         $dados = [
@@ -170,12 +189,14 @@ class HomeController extends Controller
             'detalhesIntervenientes' => $detalhesIntervenientes,
             'generos' => $generos,
             'comentarios' => $comentarios,
+            'usersrating' => $usersrating,
+            'averageRating' => $averageRating,
         ];
         
         return view('filme.filmes_show', $dados);
 
         //para mostrar a imagem de cada filme:
-        $filme = Filme::find($id);
+        $filme = Filme::find($id_filme);
 
         //verificar se o user está logado
         $user = Auth::user();
@@ -216,9 +237,20 @@ class HomeController extends Controller
     public function destroy(string $id_filme)
     {
         //
-        //Funciona bem:
+        //funciona bem:
         $deleted = DB::table('tb_filmes')->where('id_filme', $id_filme)->delete();
         return redirect() -> route('filme.index'); //apos eliminar filme, volta à pagina de filmes
 
+    }
+
+    //criar função para fazer média do user rating em cada filme
+    private function calculateAverageRating($id_filme)
+    {
+        //calcular a média dos ratings dos users em cada filme
+        $averageRating = DB::table('tb_users_rating')
+            ->where('id_filme', $id_filme)
+            ->avg('user_rating');
+
+        return number_format($averageRating, 1); //formata a média com uma casa decimal
     }
 }

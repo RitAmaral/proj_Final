@@ -100,6 +100,30 @@
             padding: 10px;
             background-color: #f9f9f9; 
         }
+
+        /* Design do botão enviar comentario e classificação */
+        .btnenviar{
+            font-size:16px;
+            border: 2px solid #191970;
+            text-decoration: none;
+            color: #fff;
+            background-color: #191970;
+            padding: 7px;
+            border-radius: 5px;
+        }
+
+        .btnenviar:hover{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            text-decoration: none;
+            background-color: #FFF775;
+            color: #191970;
+            border: 2px solid #191970;
+        }
+
+        .marginhor{
+            margin-right: 15px;
+            margin-left: 15px;
+        }
         
         </style>
     </head>
@@ -123,7 +147,8 @@
                 <h3 class="card-title">{{$filmes->titulo}}</h3>
                 <p class="card-text">
                     <b>Ano: </b> {{$filmes->ano}} <br>
-                    <b>Rating: </b> {{$filmes->rating}} <br>
+                    <b>IMDb Rating: </b> {{$filmes->rating}} <br>
+                    <b>User Rating: </b> {{ $averageRating }} <br>   
                     <b>Classificação: </b> {{$filmes->classificacao}} <br>
                     <b>País: </b> {{$filmes->pais}} <br>
                     <b>Plataforma: </b> {{$filmes->plataforma}} <br>
@@ -177,8 +202,35 @@
 
             <br><br>
 
-            <!-- Formulário deixar comentário -->
+           <!-- só para users logados, classificar o filme -->
             <div class="col-md-6">
+                @auth           
+                    <h3>Classifica o filme:</h3> 
+                    @foreach ($filmes as $filme)
+                        <form action="{{ url('/rating') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="id_filme" value="{{ $filmes->id_filme }}">
+                            @endforeach  
+                            <label for="user_rating">Selecione uma classificação de 1 a 10:</label>
+                            <select name="user_rating" id="user_rating" class="marginhor">
+                                <option value="1">1 ⭐</option>
+                                <option value="2">2 ⭐⭐</option>
+                                <option value="3">3 ⭐⭐⭐</option>
+                                <option value="4">4 ⭐⭐⭐⭐</option>
+                                <option value="5">5 ⭐⭐⭐⭐⭐</option>
+                                <option value="6">6 ⭐⭐⭐⭐⭐⭐</option>
+                                <option value="7">7 ⭐⭐⭐⭐⭐⭐⭐</option>
+                                <option value="8">8 ⭐⭐⭐⭐⭐⭐⭐⭐</option>
+                                <option value="9">9 ⭐⭐⭐⭐⭐⭐⭐⭐⭐</option>
+                                <option value="10">10 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</option>
+                            </select>
+
+                            <button type="submit" class="btn btn-primary btnenviar">Enviar Classificação</button>
+                        </form>
+                     
+                    <br>
+
+                 <!-- Formulário deixar comentário -->
                 <h3>Deixe um comentário:</h3>
                 
                 <form action="{{ route('comentarios.store') }}" method="post">
@@ -187,36 +239,11 @@
                     <div class="form-group">
                         <textarea name="comentario" id="comentario" cols="30" rows="5" class="form-control"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Enviar Comentário</button>
+                    <button type="submit" class="btn btn-primary btnenviar">Enviar Comentário</button>
                 </form>
+                @endauth
             </div>
-        </div>
-            <!-- só para users logados -->
-        @auth
-            
-            <h3>Classificação:</h3>
-            <form action="{{ url('/rating') }}" method="post">
-                @csrf
-                <input type="hidden" name="id_filme" value="{{ $filmes->id_filme }}">
-                <input type="hidden" name="id" value="{{ auth()->id() }}">
-
-                <label for="user_rating">Selecione uma classificação:</label>
-                <select name="user_rating" id="user_rating">
-                    <option value="1">☆</option>
-                    <option value="2">☆☆</option>
-                    <option value="3">☆☆☆</option>
-                    <option value="4">☆☆☆☆</option>
-                    <option value="5">☆☆☆☆☆</option>
-                    <option value="6">☆☆☆☆☆☆</option>
-                    <option value="7">☆☆☆☆☆☆☆</option>
-                    <option value="8">☆☆☆☆☆☆☆☆</option>
-                    <option value="9">☆☆☆☆☆☆☆☆☆</option>
-                    <option value="10">☆☆☆☆☆☆☆☆☆☆</option>
-                </select>
-
-                <button type="submit">Enviar Classificação</button>
-            </form>
-        @endauth
+        </div>  
         
     </body>
 </html>

@@ -159,6 +159,7 @@
           @endauth
           <br>
 
+          <!-- informação do utilizador -->
             <h2>👤 Informações do Utilizador</h2>
             <p><b>Nome:</b> {{ $user->name }}</p>
             <p><b>Email:</b> {{ $user->email }}</p>
@@ -182,6 +183,7 @@
 
             <br>
 
+            <!-- histórico de comentários -->
             <h2>✍️ Histórico de Comentários</h2>
             @if ($comentarios->isEmpty())
                 <p>Nenhum comentário encontrado.</p>
@@ -192,6 +194,22 @@
                             <p><b>Data e Hora:</b> {{ $comentario->data_hora }}</p>
                             <p><b>Filme:</b> <a href="{{ route('filme.show', $comentario->id_filme) }}" target="_blank">{{ $comentario->filme->titulo }}</a></p>
                             <p><b>Comentário:</b> {{ $comentario->comentario }}</p>
+                            <br>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+
+            <!-- histórico de ratings -->
+            <h2>✍️ Histórico de Ratings</h2>
+            @if ($userRatings->isEmpty())
+                <p>Nenhum rating encontrado.</p>
+            @else
+                <ul class="list-unstyled">
+                    @foreach ($userRatings as $userRating)
+                        <li class="userating-item">
+                            <p><b>Filme:</b> <a href="{{ route('filme.show', $userRating->id_filme) }}" target="_blank">{{ $userRating->titulo }}</a></p>
+                            <p><b>User Rating:</b> {{ $userRating->user_rating }}</p>
                             <br>
                         </li>
                     @endforeach

@@ -66,6 +66,7 @@
             border-bottom: 2px solid white;
             padding: 10px;
         }
+
         /* Design do botão editar */
         .btnedit{
             font-size:16px;
@@ -84,6 +85,7 @@
             color: #191970;
             border: 2px solid #191970;
         }
+        
         /* Para colocar alguns elementos do formulário em inline-block */
         .inlineblock{
             display:inline-block;

@@ -178,83 +178,94 @@
 
             <br>
 
-            <center>
             <!-- form para pesquisar pelo titulo do filme -->
+            <label for="pesquisar" style="margin: 10px;">Pesquisar:</label>
             <input type="text" id="searchInput" placeholder="Pesquisar filmes..."> 
 
-            <!-- form para ordenar titulo por ASC e DESC -->
-            <form id="ordenarForm" style="display: inline;">
-                <label for="ordenacao">Título:</label>
-                <select name="ordenacao" id="ordenacao">
-                    <option value="asc">A-Z ↑</option>
-                    <option value="desc">A-Z ↓</option>
-                </select>
-            </form>
+            <br>
+            <center>
+                    <!-- form para ordenar titulo por ASC e DESC -->
+                    <form id="ordenarForm" style="display: inline;">
+                        <label for="ordenacao">Título:</label>
+                        <select name="ordenacao" id="ordenacao">
+                            <option value="asc">A-Z ↑</option>
+                            <option value="desc">A-Z ↓</option>
+                        </select>
+                    </form>
 
-            <!-- form para ordenar titulo por ASC e DESC -->
-            <form id="ordenarFormAno" style="display: inline;">
-                <label for="ordenacaoAno">Ano:</label>
-                <select name="ordenacaoAno" id="ordenacaoAno">
-                    <option value="asc">Ano ↑</option>
-                    <option value="desc">Ano ↓</option>
-                </select>
-            </form>
+                    <!-- form para ordenar ano por ASC e DESC -->
+                    <form id="ordenarFormAno" style="display: inline;">
+                        <label for="ordenacaoAno">Ano:</label>
+                        <select name="ordenacaoAno" id="ordenacaoAno">
+                            <option value="asc">Ano ↑</option>
+                            <option value="desc">Ano ↓</option>
+                        </select>
+                    </form>
 
-            <!-- form para ordenar filmes por rating ASC e DESC -->
-            <form id="ordenarFormRating" style="display: inline;">
-                <label for="ordenacaoRating">Rating:</label>
-                <select name="ordenacaoRating" id="ordenacaoRating">
-                    <option value="asc">Rating ↑</option>
-                    <option value="desc">Rating ↓</option>
-                </select>
-            </form>
+                    <!-- form para ordenar filmes por rating IMDb ASC e DESC -->
+                    <form id="ordenarFormRating" style="display: inline;">
+                        <label for="ordenacaoRating">IMDb Rating:</label>
+                        <select name="ordenacaoRating" id="ordenacaoRating">
+                            <option value="asc">Rating ↑</option>
+                            <option value="desc">Rating ↓</option>
+                        </select>
+                    </form>
 
-            <!-- form para filtrar filmes por género -->
-            <form id="filtrarPorGeneroForm" style="display: inline;">
-                <label for="genero">Género:</label>
-                <select name="genero" id="genero">
-                    <option value="">Todos</option>
-                    @foreach ($generos->unique('genero') as $genero) <!-- unique é para o nome do genero aparecer apenas 1x -->
-                        <option value="{{ $genero->genero }}">{{ $genero->genero }}</option>
-                    @endforeach
-                </select>
-            </form>
+                    <!-- form para ordenar filmes por user rating ASC e DESC -->
+                    <form id="ordenarUserRating" style="display: inline;">
+                        <label for="userRating">User Rating:</label>
+                        <select name="userRating" id="userRating">
+                            <option value="asc">Rating ↑</option>
+                            <option value="desc">Rating ↓</option>
+                        </select>
+                    </form>
 
-            <!-- form para filtrar filmes por plataforma -->
-            <form id="filtrarPorPlataformaForm" style="display: inline;">
-                <label for="plataforma">Plataforma:</label>
-                <select name="plataforma" id="plataforma">
-                    <option value="">Todos</option>
-                    @foreach ($plataformas as $plataforma)
-                        <option value="{{ $plataforma->plataforma }}">{{ $plataforma->plataforma }}</option>
-                    @endforeach
-                </select>
-            </form>
+                    <!-- form para filtrar filmes por género -->
+                    <form id="filtrarPorGeneroForm" style="display: inline;">
+                        <label for="genero">Género:</label>
+                        <select name="genero" id="genero">
+                            <option value="">Todos</option>
+                            @foreach ($generos->unique('genero') as $genero) <!-- unique é para o nome do genero aparecer apenas 1x -->
+                                <option value="{{ $genero->genero }}">{{ $genero->genero }}</option>
+                            @endforeach
+                        </select>
+                    </form>
 
-            <!-- form para filtrar filmes por classificação etária -->
-            <form id="filtrarPorClassificacaoForm" style="display: inline;">
-                <label for="classificacao">Classificação:</label>
-                <select name="classificacao" id="classificacao">
-                    <option value="">Todos</option>
-                    @foreach ($classificacoes as $classificacao)
-                        <option value="{{ $classificacao->classificacao }}">{{ $classificacao->classificacao }}</option>
-                    @endforeach
-                </select>
-            </form>
+                    <!-- form para filtrar filmes por plataforma -->
+                    <form id="filtrarPorPlataformaForm" style="display: inline;">
+                        <label for="plataforma">Plataforma:</label>
+                        <select name="plataforma" id="plataforma">
+                            <option value="">Todos</option>
+                            @foreach ($plataformas as $plataforma)
+                                <option value="{{ $plataforma->plataforma }}">{{ $plataforma->plataforma }}</option>
+                            @endforeach
+                        </select>
+                    </form>
 
-            <!-- form para filtrar filmes por paises -->
-            <form id="filtrarPorPaisForm" style="display: inline;">
-                <label for="pais">País:</label>
-                <select name="pais" id="pais">
-                    <option value="">Todos</option>
-                    @foreach ($paises as $pais)
-                        <option value="{{ $pais->pais }}">{{ $pais->pais }}</option>
-                    @endforeach
-                </select>
-            </form>
+                    <!-- form para filtrar filmes por classificação etária -->
+                    <form id="filtrarPorClassificacaoForm" style="display: inline;">
+                        <label for="classificacao">Classificação:</label>
+                        <select name="classificacao" id="classificacao">
+                            <option value="">Todos</option>
+                            @foreach ($classificacoes as $classificacao)
+                                <option value="{{ $classificacao->classificacao }}">{{ $classificacao->classificacao }}</option>
+                            @endforeach
+                        </select>
+                    </form>
+
+                    <!-- form para filtrar filmes por paises -->
+                    <form id="filtrarPorPaisForm" style="display: inline;">
+                        <label for="pais">País:</label>
+                        <select name="pais" id="pais">
+                            <option value="">Todos</option>
+                            @foreach ($paises as $pais)
+                                <option value="{{ $pais->pais }}">{{ $pais->pais }}</option>
+                            @endforeach
+                        </select>
+                    </form>                
             </center>
 
-
+            
             <!-- tabela de filmes -->
             <center>
                 <br>
@@ -269,8 +280,9 @@
                         <th scope="col">País 🌍</th>
                         <th scope="col">Plataforma</th>
                         <th scope="col">Género</th>
-                        <th scope="col">Rating ⭐</th>
-                        <th scope="col">Link IMDb</th>
+                        <th scope="col">IMDb Rating ⭐</th>
+                        <th scope="col">User Rating ⭐</th>
+                        <th scope="col">IMDb</th>
                         <th colspan=3><center>Ações</th></center>
                         </tr>
                     </thead>
@@ -290,19 +302,26 @@
                             @endif
                             </td>
                             <td class="filme-rating">{{ $filme->rating }}</td>
+                            <td>
+                                @if ($filme->averageUserRating !== null)
+                                    {{ number_format($filme->averageUserRating, 1) }} <!-- averating rating do user com uma casa decimal -->
+                                @else
+                                    <p>0.0</p>
+                                @endif
+                            </td>    
                             <td><a href="{{ $filme->link_imdb }}" target="_blank" class="imdbbutton">IMDb</a></td>
                             <td>
-                                <a type='button' class="btn btn-success" href="{{ route('filme.show', $filme->id_filme)}}">Ver</a> <!--ir à route, e está lá user.show; buscar aos users o id-->
+                                <a type='button' class="btn btn-success" href="{{ route('filme.show', $filme->id_filme)}}">🛈</a> <!--ir à route, e está lá user.show; buscar aos users o id-->
                             </td>
                             @if(auth()->check() && auth()->user()->role === 'admin') <!-- só admins têm acesso a editar e eliminar-->
                                 <td>
-                                    <a type='button' class="btn btn-primary" href="{{ route('filme.edit', $filme->id_filme)}}">Editar</a>
+                                    <a type='button' class="btn btn-primary" href="{{ route('filme.edit', $filme->id_filme)}}">✏️</a>
                                 </td>
                                 <td>
                                     <form action ="{{ route('filme.delete', $filme->id_filme)}}" method="post">
                                     @method('delete')
                                     @csrf
-                                    <input type="submit" class="btn btn-danger" value="Eliminar">
+                                    <input type="submit" class="btn btn-danger" value="⛌">
                                     </form>
                                 </td>       
                             @endif                   
@@ -359,7 +378,7 @@
                 });
             </script>
 
-            <!-- Javascript - necessário para ordenar filmes por rating ASC e DESC -->
+            <!-- Javascript - necessário para ordenar ano por ASC e DESC -->
             <script>
                 document.getElementById('ordenacaoAno').addEventListener('change', function () {
                     const ordenacaoAno = this.value;
@@ -370,9 +389,9 @@
                         const anoB = parseFloat(b.querySelector('.filme-ano').textContent);
 
                         if (ordenacaoAno === 'asc') {
-                            return anoA - anoB; //ordena por menor rating (ASC)
+                            return anoA - anoB; //ordena por menor
                         } else {
-                            return anoB - anoA; //ordena por maior rating (DESC)
+                            return anoB - anoA; //ordena por maior
                         }
                     });
 
@@ -381,7 +400,7 @@
                 });
             </script>
 
-            <!-- Javascript - necessário para ordenar filmes por rating ASC e DESC -->
+            <!-- Javascript - necessário para ordenar filmes por imdb rating ASC e DESC -->
             <script>
                 document.getElementById('ordenacaoRating').addEventListener('change', function () {
                     const ordenacao = this.value;
@@ -400,6 +419,29 @@
 
                     const table = document.querySelector('.table tbody');
                     filmes.forEach(filme => table.appendChild(filme));
+                });
+            </script>
+
+            <!-- Javascript - necessário para ordenar filmes por user rating ASC e DESC -->
+            <script>
+                 document.getElementById('ordenarUserRating').addEventListener('change', function () {
+                    const ordenacaoUserRating = this.value; // verifique se o nome da variável está correto
+
+                    const ufilmes = Array.from(document.querySelectorAll('.filme-item'));
+
+                    ufilmes.sort(function (a, b) {
+                        const uratingA = parseFloat(a.querySelector('td:nth-child(8)').textContent);
+                        const uratingB = parseFloat(b.querySelector('td:nth-child(8)').textContent);
+
+                        if (ordenacaoUserRating === 'asc') {
+                            return uratingA - uratingB; // ordena por menor rating (ASC)
+                        } else {
+                            return uratingB - uratingA; // ordena por maior rating (DESC)
+                        }
+                    });
+
+                    const table = document.querySelector('.table tbody');
+                    ufilmes.forEach(filme => table.appendChild(filme));
                 });
             </script>
 

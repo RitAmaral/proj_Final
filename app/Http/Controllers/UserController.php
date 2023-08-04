@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Comentario;
 use App\Models\IntervPreferido;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -122,7 +123,13 @@ class UserController extends Controller
         //obter intervenientes preferidos do utilizador, e exibir no perfil       
         $intervenientesPreferidos = $user->intervPreferidos;
 
-        return view('user.perfil', compact('user', 'comentarios', 'intervenientesPreferidos'));
+        $userRatings = DB::table('tb_users_rating')
+            ->join('tb_filmes', 'tb_users_rating.id_filme', '=', 'tb_filmes.id_filme')
+            ->where('tb_users_rating.id', $user->id)
+            ->select('tb_users_rating.*', 'tb_filmes.titulo')
+            ->get();
+
+        return view('user.perfil', compact('user', 'comentarios', 'intervenientesPreferidos', 'userRatings'));
     }
 
 }

@@ -112,7 +112,7 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Email 📧</th>
                     <th scope="col">Criado em</th>
-                    <th colspan=3><center>Ações 👀 🚧 ❌</center></th>
+                    <th colspan=3><center>Ações</center></th>
                 </tr>
             </thead>
             <tbody>
@@ -123,16 +123,16 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->created_at}}</td>
                     <td>
-                        <a type='button' class="btn btn-success" href="{{ route('user.show', $user->id)}}">Ver</a> <!--ir à route, e está lá user.show; buscar aos users o id-->
+                        <a type='button' class="btn btn-success" href="{{ route('user.show', $user->id)}}">🛈</a> <!--ir à route, e está lá user.show; buscar aos users o id-->
                     </td>
                     <td>
-                        <a type='button' class="btn btn-primary" href="{{ route('user.edit', $user->id)}}">Editar</a>
+                        <a type='button' class="btn btn-primary" href="{{ route('user.edit', $user->id)}}">✏️</a>
                     </td>
                     <td>
                         <form action ="{{ route('user.delete', $user->id)}}" method="post">
                         @method('delete')
                         @csrf
-                        <input type="submit" class="btn btn-danger" value="Eliminar">
+                        <input type="submit" class="btn btn-danger" value="⛌">
 
                         </form>
                     </td>
