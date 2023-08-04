@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- PÁGINA PRINCIPAL/INICIAL DOS FILMES-->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -15,13 +15,15 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-        <!-- Styles -->
+        <!-- Styles css -->
         <style>
+
         body{
             background-color: #191970;
             padding: 10px;
             color: white;
         }
+        
         /* Design do botão login/logout */
         .login{
             position:fixed;
@@ -47,6 +49,7 @@
             text-decoration: none;
             color: #191970;
         }
+
         /* Design do Botão registar/perfil */
         .btnregister{
             font-size:20px;
@@ -63,10 +66,12 @@
             text-decoration: none;
             color: #191970;
         }
+
         h1{
             color: white;
             font-size: 70px;
         }
+
         h2{
             color: #A9AAF7;
             font-size: 50px;
@@ -116,25 +121,16 @@
             text-decoration: none;
         }
 
-        /* Design do hover quando passamos em cima do texto "Escolhe a página a que quer aceder" */
-        .escolhe{
-            transition: width 2s;
-        }
-        .escolhe:hover{
-            background-color:white;
-            color: #191970;
-            padding: 1px;
-            font-weight: bold;
-            width: 300px;
-        }
+
         </style>
     </head>
     <body>
+        <!-- se o user tiver logado, vão aparecer botões logout e perfil, se não vão aparecer login e register-->
         @if (Route::has('login'))
                 <div class="login">
                     @auth                        
                     @else
-                        <a href="{{ route('login') }}" class="btnlogin">Log in</a> <!--botão login-->
+                        <a href="{{ route('login') }}" class="btnlogin">Login</a> <!--botão login-->
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="btnregister">Register</a> <!--botão registar-->
@@ -163,9 +159,6 @@
 
         <center>
             <p>Escolha a página a que quer aceder: </p>
-            <div class="escolhe">
-                <!-- fazer display inline block  e mudar cor do botao user-->
-            </div>
 
             <br>
 

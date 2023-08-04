@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+//rota para a página inicial: Bem-vindo! Sugestões de Filmes
 Route::get('/', function () {
     return view('welcome');
 });
@@ -85,7 +86,7 @@ Route::get('/interveniente', [App\Http\Controllers\IntervenienteController::clas
 Route::get('/interveniente/{id}', [App\Http\Controllers\IntervenienteController::class, 'show'])->name('interveniente.show');
 
 
-/*---------------------comentários----------------*/
+/*---------------------comentários e perfil do user----------------*/
 
 Route::post('/comentarios', [App\Http\Controllers\ComentarioController::class, 'store'])->name('comentarios.store');
 

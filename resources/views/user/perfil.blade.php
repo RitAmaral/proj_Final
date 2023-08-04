@@ -136,6 +136,34 @@
             padding: 20px;
         }
 
+        /* quando passo por cima de links */
+        a:hover{
+            color: #E4A063;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* botao voltar ao topo*/
+        .topo {
+            position: fixed;
+            bottom: 20px; 
+            left: 20px;
+            z-index: 9999; 
+            padding:5px;
+            background-color: white;
+            color: #191970;
+            border-radius: 5px;
+            font-size: 16px;
+            border: 2px solid #E4A063;
+        }
+        
+        .topo:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+            text-decoration: none;
+            background-color: #E4A063;
+            color: white;
+        }
+
     </style>
   </head>
 
@@ -209,7 +237,7 @@
                     @foreach ($userRatings as $userRating)
                         <li class="userating-item">
                             <p><b>Filme:</b> <a href="{{ route('filme.show', $userRating->id_filme) }}" target="_blank">{{ $userRating->titulo }}</a></p>
-                            <p><b>User Rating:</b> {{ $userRating->user_rating }}</p>
+                            <p><b>User Rating:</b> {{ $userRating->user_rating }} ⭐</p>
                             <br>
                         </li>
                     @endforeach
@@ -217,6 +245,8 @@
             @endif
    
         </div>
+
+        <a type='button' href="#top" class="topo">↑</a> <!-- botão voltar ao topo-->
 
         <!-- background animado -->
         <script>

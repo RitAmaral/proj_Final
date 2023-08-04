@@ -181,28 +181,44 @@
 
             <br>
 
-            <input type="text" id="searchInput" placeholder="Pesquisar intervenientes...">
+            <!-- form para pesquisar intervenientes -->
+            <center>
+                <label for="pesquisar" style="margin: 10px;">Pesquisar:</label>
+                <input type="text" id="searchInput" placeholder="Pesquisar intervenientes..."  style="width: 400px;"> 
+            </center>
+            <br>
+            
+            <center>
+                <!-- form para ordenar titulo por ASC e DESC -->
+                <form id="ordenarInterv" style="display: inline;">
+                    <label for="ordenar">Interveniente:</label>
+                    <select name="ordenar" id="ordenar">
+                        <option value="asc">A-Z ↑</option>
+                        <option value="desc">A-Z ↓</option>
+                    </select>
+                </form>
 
-            <!-- Javascript - necessário para a pesquisa de intervenientes ir diminuindo  -->
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const searchInput = document.getElementById('searchInput');
-                    const intervenienteItems = document.querySelectorAll('.interveniente-item');
+                <!-- form para filtrar filmes por paises -->
+                <form id="filtrarPorPaisForm" style="display: inline;">
+                    <label for="pais">País:</label>
+                    <select name="pais" id="pais">
+                        <option value="">Todos</option>
+                        @foreach ($paises as $pais)
+                            <option value="{{ $pais->pais }}">{{ $pais->pais }}</option>
+                        @endforeach
+                    </select>
+                </form>  
 
-                    searchInput.addEventListener('input', function (event) {
-                        const searchTerm = event.target.value.trim().toLowerCase();
-
-                        intervenienteItems.forEach(item => {
-                            const nomeInterveniente = item.querySelector('td:nth-child(1)').textContent.toLowerCase();
-                            if (nomeInterveniente.includes(searchTerm)) {
-                                item.style.display = ''; //exibir a linha
-                            } else {
-                                item.style.display = 'none'; //ocultar a linha
-                            }
-                        });
-                    });
-                });
-            </script>
+                <form id="filtrarPorFuncaoForm" style="display: inline;">
+                    <label for="funcao">Função:</label>
+                    <select name="funcao" id="funcao">
+                        <option value="">Todos</option>
+                        @foreach (collect($intervenientesData)->unique('funcao') as $intervenienteData)
+                            <option value="{{ $intervenienteData['funcao'] }}">{{ $intervenienteData['funcao'] }}</option>
+                        @endforeach
+                    </select>
+                </form>
+            </center>
 
             <center>
                 <br>
@@ -235,6 +251,85 @@
             </center>
             <br>
             <a type='button' href="#top" class="topo">↑</a> <!-- botão voltar ao topo-->
+
+        <!-- Javascript - necessário para a pesquisa de intervenientes ir diminuindo  -->
+        <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const searchInput = document.getElementById('searchInput');
+                    const intervenienteItems = document.querySelectorAll('.interveniente-item');
+
+                    searchInput.addEventListener('input', function (event) {
+                        const searchTerm = event.target.value.trim().toLowerCase();
+
+                        intervenienteItems.forEach(item => {
+                            const nomeInterveniente = item.querySelector('td:nth-child(1)').textContent.toLowerCase();
+                            if (nomeInterveniente.includes(searchTerm)) {
+                                item.style.display = ''; //exibir a linha
+                            } else {
+                                item.style.display = 'none'; //ocultar a linha
+                            }
+                        });
+                    });
+                });
+        </script>
+
+        <!-- Javascript - necessário para ordenar intervenientes ASC e DESC -->
+        <script>
+                document.getElementById('ordenar').addEventListener('change', function () {
+                    const ordenar = this.value;
+                    const intervenienteItems = Array.from(document.querySelectorAll('.interveniente-item'));
+
+                    intervenienteItems.sort(function (a, b) {
+                        const intervA = a.querySelector('td:nth-child(1)').textContent.toLowerCase();
+                        const intervB = b.querySelector('td:nth-child(1)').textContent.toLowerCase();
+
+                        if (ordenar === 'asc') {
+                            return intervA.localeCompare(intervB);
+                        } else {
+                            return intervB.localeCompare(intervA);
+                        }
+                    });
+
+                    const table = document.querySelector('.table tbody');
+                    intervenienteItems.forEach(interveniente => table.appendChild(interveniente));
+                });
+        </script>
+
+        <!-- Javascript - necessário para selecionar intervenientes por pais -->
+        <script>
+                document.getElementById('filtrarPorPaisForm').addEventListener('change', function () {
+                    event.preventDefault();
+                    const paisSelecionado = document.getElementById('pais').value.trim().toLowerCase();
+                    const intervItems = document.querySelectorAll('.interveniente-item');
+
+                    intervItems.forEach(item => {
+                        const paisesInterv = item.querySelector('td:nth-child(2)').textContent.toLowerCase(); 
+                        if (!paisSelecionado || paisesInterv.includes(paisSelecionado)) {
+                            item.style.display = ''; //mostra os intervenientes por pais
+                        } else {
+                            item.style.display = 'none'; //ocultar os intervenientes que nao sao do pais selecionado
+                        }
+                    });
+                });
+            </script>
+
+        <!-- Javascript - necessário para selecionar intervenientes por função -->
+        <script>
+                document.getElementById('filtrarPorFuncaoForm').addEventListener('change', function () {
+                    event.preventDefault();
+                    const funcaoSelecionado = document.getElementById('funcao').value.trim().toLowerCase();
+                    const intervItems = document.querySelectorAll('.interveniente-item');
+
+                    intervItems.forEach(item => {
+                        const funcaoInterv = item.querySelector('td:nth-child(3)').textContent.toLowerCase(); 
+                        if (!funcaoSelecionado || funcaoInterv.includes(funcaoSelecionado)) {
+                            item.style.display = ''; //mostra os intervenientes por pais
+                        } else {
+                            item.style.display = 'none'; //ocultar os intervenientes que nao sao do pais selecionado
+                        }
+                    });
+                });
+        </script>
 
         </main>
     <!-- Optional JavaScript -->

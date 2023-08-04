@@ -206,27 +206,27 @@
             <div class="col-md-6">
                 @auth           
                     <h3>Classifica o filme:</h3> 
-                    @foreach ($filmes as $filme)
-                        <form action="{{ url('/rating') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="id_filme" value="{{ $filmes->id_filme }}">
-                            @endforeach  
-                            <label for="user_rating">Selecione uma classificação de 1 a 10:</label>
-                            <select name="user_rating" id="user_rating" class="marginhor">
-                                <option value="1">1 ⭐</option>
-                                <option value="2">2 ⭐⭐</option>
-                                <option value="3">3 ⭐⭐⭐</option>
-                                <option value="4">4 ⭐⭐⭐⭐</option>
-                                <option value="5">5 ⭐⭐⭐⭐⭐</option>
-                                <option value="6">6 ⭐⭐⭐⭐⭐⭐</option>
-                                <option value="7">7 ⭐⭐⭐⭐⭐⭐⭐</option>
-                                <option value="8">8 ⭐⭐⭐⭐⭐⭐⭐⭐</option>
-                                <option value="9">9 ⭐⭐⭐⭐⭐⭐⭐⭐⭐</option>
-                                <option value="10">10 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</option>
-                            </select>
+                    <form action="{{ url('/rating') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="id_filme" value="{{ $filmes->id_filme }}">
+                        <input type="hidden" name="id" value="{{ auth()->id() }}">
 
-                            <button type="submit" class="btn btn-primary btnenviar">Enviar Classificação</button>
-                        </form>
+                        <label for="user_rating">Selecione uma classificação:</label>
+                        <select name="user_rating" id="user_rating" class="marginhor">
+                            <option value="1">1 ⭐</option>
+                            <option value="2">2 ⭐⭐</option>
+                            <option value="3">3 ⭐⭐⭐</option>
+                            <option value="4">4 ⭐⭐⭐⭐</option>
+                            <option value="5">5 ⭐⭐⭐⭐⭐</option>
+                            <option value="6">6 ⭐⭐⭐⭐⭐⭐</option>
+                            <option value="7">7 ⭐⭐⭐⭐⭐⭐⭐</option>
+                            <option value="8">8 ⭐⭐⭐⭐⭐⭐⭐⭐</option>
+                            <option value="9">9 ⭐⭐⭐⭐⭐⭐⭐⭐⭐</option>
+                            <option value="10">10 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</option>
+                        </select>
+                        <br>
+                        <button type="submit" class="btn btn-primary btnenviar">Enviar Classificação</button>
+                    </form>
                      
                     <br>
 

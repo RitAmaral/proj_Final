@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Filme; //importar o Modelo Filme
-use Illuminate\Support\Facades\DB; //importar
+use Illuminate\Support\Facades\DB; //base de dados
 use App\Models\Comentario;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth; //autenticação
 
 class HomeController extends Controller
 {
@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        //o que queremos ter acesso na página inicial de filmes / index
         $filmes = DB::table('tb_filmes')
         ->select(
             'tb_filmes.id_filme',
@@ -55,7 +55,7 @@ class HomeController extends Controller
             ->join('tb_filmes', 'tb_filmesgeneros.id_filme', '=', 'tb_filmes.id_filme')
             ->get();
 
-        //dd($filmes);
+        //dd($filmes); //usado para ver se está a passar alguma coisa para a página
 
         $filmesComGeneros = [];
         foreach ($filmesGeneros as $filmeGenero) {
@@ -70,6 +70,7 @@ class HomeController extends Controller
         $plataformas = DB::table('tb_plataformas')->get(); //criar esta variável, para passar para a view, onde vamos querer filtrar filmes por plataforma
         $classificacoes = DB::table('tb_classificacoes')->get(); //para filtrar por classificações
         $paises = DB::table('tb_paises')->get(); //para filtrar tb por paises
+        
         $usersrating = DB::table('tb_users_rating')->get(); //para filtrar por user rating, com a média calculada embaixo 
 
         //calcular a média dos ratings dos users
@@ -246,11 +247,11 @@ class HomeController extends Controller
     //criar função para fazer média do user rating em cada filme
     private function calculateAverageRating($id_filme)
     {
-        //calcular a média dos ratings dos users em cada filme
+        //calcular a média dos users ratings em cada filme
         $averageRating = DB::table('tb_users_rating')
             ->where('id_filme', $id_filme)
             ->avg('user_rating');
 
-        return number_format($averageRating, 1); //formata a média com uma casa decimal
+        return number_format($averageRating, 1); //formata a média dos user ratings com uma casa decimal
     }
 }

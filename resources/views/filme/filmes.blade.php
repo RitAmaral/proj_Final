@@ -18,152 +18,153 @@
 
         <!-- Styles -->
         <style>
-        body{
-            background-color: #A9AAF7;
-            padding: 10px;
-            color: black;
-        }
 
-        /* Design do botão back to welcome page */
-        .back {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 20px;
-            text-decoration: none;
-        }
-
-        .btnback {
-            border: 2px solid #191970;
-            border-radius: 5px;
-            margin-right: 10px;
-            padding: 7px;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #191970;
-            background-color: white;
-        }
-
-         /* Design do icon da homepage*/
-        .icon {
-            width: 24px; /* Defina a largura do ícone */
-            height: 24px; /* Defina a altura do ícone */
-            background-image: url("{{ asset('icons/homepage.png') }}");
-            background-size: cover;
-            background-repeat: no-repeat;          
-        }
-
-        .btnback:hover {
-            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-            text-decoration: none;
-            background-color: #191970;
-            color: white;
-        }
-       
-
-        h1{
-            color: white;
-            font-size: 40px;
-            border-bottom: 2px solid white;
-            padding: 10px;
-        }
-
-        /* Design do hover / quando passamos por cima do cabeçalho da tabela */ 
-        .hover:hover{
-            background-color:#FFF775;
-            padding: 1px;
-        }
-
-        /* Design do hover2 / quando passamos por cima da tabela */ 
-        .hover2:hover{
-            background-color:#fff;
-            padding: 1px;
-        }
-
-        /* Design do botão IMDB */ 
-        .imdbbutton {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #f5de50;
-            color: black;
-            font-size: 14px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        /* Design do botão IMDB quando passamos por cima */ 
-        .imdbbutton:hover {
-            background-color: #eac13e;
-            text-decoration: none;
-            color: white;
-        }
-
-        /* Design do botão Adicionar Filme */
-        .pulser {
-            width: fit-content;
-            background: #191970;
-            border-radius: 5px;
-            position: relative;
-            color: #fff;
-        }
-
-        .pulser::after {
-            animation: pulse 4000ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite;
-        }
-
-        @keyframes pulse {
-            0% {opacity: 0;}
-            50% {
-            transform: scale(1.4);
-            opacity: 0.4;
+            body{
+                background-color: #A9AAF7;
+                padding: 10px;
+                color: black;
             }
-        }
 
-        .pulser::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: #191970;
-            border-radius: 5px;
-            z-index: -1;
-        }
+            /* Design do botão back to welcome page */
+            .back {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 20px;
+                text-decoration: none;
+            }
 
-        .add:hover{
-            background-color: #FFF775;
-            color: #191970;
-        }
+            .btnback {
+                border: 2px solid #191970;
+                border-radius: 5px;
+                margin-right: 10px;
+                padding: 7px;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: #191970;
+                background-color: white;
+            }
 
-        /* botao voltar ao topo*/
-        .topo {
-            position: fixed;
-            bottom: 20px; 
-            left: 20px;
-            z-index: 9999; 
-            padding:5px;
-            background-color: white;
-            color: #191970;
-            border-radius: 5px;
-            font-size: 16px;
-            border: 2px solid #191970;
-        }
-        
-        .topo:hover {
-            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-            text-decoration: none;
-            background-color: #191970;
-            color: white;
-        }
+            /* Design do icon da homepage */
+            .icon {
+                width: 24px; /* Defina a largura do icon */
+                height: 24px; /* Defina a altura do icon */
+                background-image: url("{{ asset('icons/homepage.png') }}");
+                background-size: cover;
+                background-repeat: no-repeat;          
+            }
+
+            .btnback:hover {
+                box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+                text-decoration: none;
+                background-color: #191970;
+                color: white;
+            }
+
+            h1{
+                color: white;
+                font-size: 40px;
+                border-bottom: 2px solid white;
+                padding: 10px;
+            }
+
+            /* Design do hover / quando passamos por cima do cabeçalho da tabela */ 
+            .hover:hover{
+                background-color:#FFF775;
+                padding: 1px;
+            }
+
+            /* Design do hover2 / quando passamos por cima das rows da tabela */ 
+            .hover2:hover{
+                background-color:#fff;
+                padding: 1px;
+            }
+
+            /* Design do botão IMDB */ 
+            .imdbbutton {
+                display: inline-block;
+                padding: 8px 16px;
+                background-color: #f5de50;
+                color: black;
+                font-size: 14px;
+                font-weight: bold;
+                text-decoration: none;
+                border-radius: 4px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            
+            /* Design do botão IMDB quando passamos por cima */ 
+            .imdbbutton:hover {
+                background-color: #eac13e;
+                text-decoration: none;
+                color: white;
+            }
+
+            /* Design do botão Adicionar Filme */
+            .pulser {
+                width: fit-content;
+                background: #191970;
+                border-radius: 5px;
+                position: relative;
+                color: #fff;
+            }
+
+            .pulser::after {
+                animation: pulse 4000ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite;
+            }
+
+            @keyframes pulse {
+                0% {opacity: 0;}
+                50% {
+                transform: scale(1.4);
+                opacity: 0.4;
+                }
+            }
+
+            .pulser::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: #191970;
+                border-radius: 5px;
+                z-index: -1;
+            }
+
+            .add:hover{
+                background-color: #FFF775;
+                color: #191970;
+            }
+
+            /* Botao voltar ao topo */
+            .topo {
+                position: fixed;
+                bottom: 20px; 
+                left: 20px;
+                z-index: 9999; 
+                padding:5px;
+                background-color: white;
+                color: #191970;
+                border-radius: 5px;
+                font-size: 16px;
+                border: 2px solid #191970;
+            }
+            
+            .topo:hover {
+                box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+                text-decoration: none;
+                background-color: #191970;
+                color: white;
+            }
         
         </style>
     </head>
+
     <body>
         <main>
         <div class="back">
@@ -179,8 +180,10 @@
             <br>
 
             <!-- form para pesquisar pelo titulo do filme -->
-            <label for="pesquisar" style="margin: 10px;">Pesquisar:</label>
-            <input type="text" id="searchInput" placeholder="Pesquisar filmes..."> 
+            <center>
+                <label for="pesquisar" style="margin: 10px;">Pesquisar:</label>
+                <input type="text" id="searchInput" placeholder="Pesquisar filmes..."  style="width: 400px;"> 
+            </center>
 
             <br>
             <center>
@@ -206,8 +209,8 @@
                     <form id="ordenarFormRating" style="display: inline;">
                         <label for="ordenacaoRating">IMDb Rating:</label>
                         <select name="ordenacaoRating" id="ordenacaoRating">
-                            <option value="asc">Rating ↑</option>
-                            <option value="desc">Rating ↓</option>
+                            <option value="asc">⭐ ↑</option>
+                            <option value="desc">⭐ ↓</option>
                         </select>
                     </form>
 
@@ -215,8 +218,8 @@
                     <form id="ordenarUserRating" style="display: inline;">
                         <label for="userRating">User Rating:</label>
                         <select name="userRating" id="userRating">
-                            <option value="asc">Rating ↑</option>
-                            <option value="desc">Rating ↓</option>
+                            <option value="asc">⭐ ↑</option>
+                            <option value="desc">⭐ ↓</option>
                         </select>
                     </form>
 
@@ -304,7 +307,7 @@
                             <td class="filme-rating">{{ $filme->rating }}</td>
                             <td>
                                 @if ($filme->averageUserRating !== null)
-                                    {{ number_format($filme->averageUserRating, 1) }} <!-- averating rating do user com uma casa decimal -->
+                                    {{ number_format($filme->averageUserRating, 1) }} <!-- average rating do user com uma casa decimal -->
                                 @else
                                     <p>0.0</p>
                                 @endif
@@ -503,15 +506,15 @@
             <script>
                 document.getElementById('filtrarPorPaisForm').addEventListener('change', function () {
                     event.preventDefault();
-                    const paisSelecionada = document.getElementById('pais').value.trim().toLowerCase();
+                    const paisSelecionado = document.getElementById('pais').value.trim().toLowerCase();
                     const filmeItems = document.querySelectorAll('.filme-item');
 
                     filmeItems.forEach(item => {
                         const paisesFilme = item.querySelector('td:nth-child(4)').textContent.toLowerCase(); 
-                        if (!paisSelecionada || paisesFilme.includes(paisSelecionada)) {
-                            item.style.display = ''; //mostra os filmes com classificacao do filme correspondente à classificacao selecionada
+                        if (!paisSelecionado || paisesFilme.includes(paisSelecionado)) {
+                            item.style.display = ''; //mostra os filmes do pais selecionado
                         } else {
-                            item.style.display = 'none'; //ocultar o filme caso a classificacao do filme não corresponda à classificacao selecionada
+                            item.style.display = 'none'; //oculta os filmes que nao sao do país selecionado
                         }
                     });
                 });

@@ -44,7 +44,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    // Definir relacionamentos
+    //definir relacionamentos
     public function intervenientesPreferidos()
     {
         return $this->belongsToMany(Interveniente::class, 'tb_interv_preferidos', 'id', 'id_interveniente');

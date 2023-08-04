@@ -97,6 +97,13 @@
             font-size: 26px;
         }
 
+        /* quando passo por cima de links */
+        a:hover{
+            color: #E4A063;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
         /* Design do botão Adicionar Filme */
         .pulser {
             width: fit-content;

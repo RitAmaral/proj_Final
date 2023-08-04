@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class UserRatingController extends Controller
 {
     //guardar user rating
+    
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -18,25 +19,14 @@ class UserRatingController extends Controller
         ]);
     
         $id_filme = $validatedData['id_filme'];
-        $user = Auth::user();
+        $user_id = auth()->id();
+        $user_rating = $validatedData['user_rating'];
     
-        // Verificar se o user já deu rating ao filme
-        $existingRating = UserRating::where('id_filme', $id_filme)
-                                    ->where('id', $user->id)
-                                    ->first();
-    
-        if ($existingRating) {
-            // Se já tiver dado rating, atualizar o rating que tinha dado
-            $existingRating->user_rating = $validatedData['user_rating'];
-            $existingRating->save();
-        } else {
-            // Dar o rating pela primeira vez
-            $userRating = new UserRating();
-            $userRating->id_filme = $id_filme;
-            $userRating->id = $user->id;
-            $userRating->user_rating = $validatedData['user_rating'];
-            $userRating->save();
-        }
+        $rating = new UserRating();
+        $rating->id_filme = $id_filme;
+        $rating->id = $user_id;
+        $rating->user_rating = $user_rating;
+        $rating->save();
     
         return redirect()->route('filme.index');
     }

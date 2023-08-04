@@ -12,15 +12,16 @@ class UserRating extends Model
     use HasFactory;
 
     protected $table = 'tb_users_rating';
+    protected $primaryKey = 'id_ur';
     public $timestamps = false;
 
-    // Definindo a relação com Filme
+    //definir a relação com modelo Filme
     public function filme()
     {
         return $this->belongsTo(Filme::class, 'id_filme', 'id_filme');
     }
 
-    // Definindo a relação com User
+    //definir a relação com modelo User
     public function user()
     {
         return $this->belongsTo(User::class, 'id', 'id');

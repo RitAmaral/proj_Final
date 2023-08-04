@@ -7,7 +7,7 @@ use App\Models\Interveniente;
 use App\Models\IntervPreferido;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Models\Filme; //importar
+use App\Models\Filme; 
 
 
 class IntervenienteController extends Controller
@@ -24,6 +24,8 @@ class IntervenienteController extends Controller
             ->join('tb_paises', 'tb_intervenientes.id_pais', '=', 'tb_paises.id_pais')
             ->orderBy('tb_intervenientes.interveniente', 'ASC')
             ->get();
+
+        $paises = DB::table('tb_paises')->get();
 
         $detailsIntervenientes = DB::table('tb_detalhesfilmes')
             ->select(
@@ -49,7 +51,7 @@ class IntervenienteController extends Controller
             }
         }
 
-        return view('interveniente.intervenientes', compact('intervenientes', 'intervenientesData'));
+        return view('interveniente.intervenientes', compact('intervenientes', 'intervenientesData', 'paises'));
     }
 
     public function show(string $id_interveniente)
@@ -70,7 +72,7 @@ class IntervenienteController extends Controller
         if ($user) {
             $id_interveniente = $request->input('id_interveniente');
 
-            // Verifique se o ID do interveniente não é nulo antes de criar o interveniente preferido
+            //verifica se o ID do interveniente não é nulo antes de criar o interveniente preferido
             if (!empty($id_interveniente)) {
                 IntervPreferido::create([
                     'id' => $user->id,
