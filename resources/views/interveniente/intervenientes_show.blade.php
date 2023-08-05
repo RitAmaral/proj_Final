@@ -33,14 +33,14 @@
         }
 
         .btnback {
-            border: 2px solid #191970;
+            border: 2px solid #C960A5;
             border-radius: 5px;
             margin-right: 10px;
             padding: 7px;
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: #191970;
+            color: #C960A5;
             background-color: white;
         }
 
@@ -56,7 +56,7 @@
         .btnback:hover {
             box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
             text-decoration: none;
-            background-color: #191970;
+            background-color: #C960A5;
             color: white;
         }
 
@@ -99,7 +99,7 @@
 
         /* quando passo por cima de links */
         a:hover{
-            color: #E4A063;
+            color: #C960A5;
             text-decoration: none;
             font-weight: bold;
         }
@@ -107,7 +107,7 @@
         /* Design do botão Adicionar Filme */
         .pulser {
             width: fit-content;
-            background: #191970;
+            background: #C960A5;
             border-radius: 5px;
             position: relative;
             color: #fff;
@@ -132,14 +132,14 @@
             height: 100%;
             top: 0;
             left: 0;
-            background: #191970;
+            background: #C960A5;
             border-radius: 5px;
             z-index: -1;
         }
 
         .add:hover{
             background-color: #fff;
-            color: #191970;
+            color:#C960A5;
         }
         
         </style>

@@ -33,18 +33,18 @@
         }
 
         .btnback {
-            border: 2px solid #191970;
+            border: 2px solid #C960A5;
             border-radius: 5px;
             margin-right: 10px;
             padding: 7px;
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: #191970;
+            color: #C960A5;
             background-color: white;
         }
 
-         /* Design do icon da homepage*/
+         /* Design do icon da homepage */
         .icon {
             width: 24px; /* Defina a do ícone */
             height: 24px; /* Defina a altura do ícone */
@@ -56,7 +56,7 @@
         .btnback:hover {
             box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
             text-decoration: none;
-            background-color: #191970;
+            background-color: #C960A5;
             color: white;
         }
 
@@ -104,10 +104,10 @@
         /* Design do botão enviar comentario e classificação */
         .btnenviar{
             font-size:16px;
-            border: 2px solid #191970;
+            border: 2px solid #C960A5;
             text-decoration: none;
             color: #fff;
-            background-color: #191970;
+            background-color: #C960A5;
             padding: 7px;
             border-radius: 5px;
         }
@@ -115,9 +115,9 @@
         .btnenviar:hover{
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
             text-decoration: none;
-            background-color: #FFF775;
-            color: #191970;
-            border: 2px solid #191970;
+            background-color: white;
+            color: #C960A5;
+            border: 2px solid #C960A5;
         }
 
         .marginhor{

@@ -34,14 +34,14 @@
         }
 
         .btnback {
-            border: 2px solid #191970;
+            border: 2px solid #C960A5;
             border-radius: 5px;
             margin-right: 10px;
             padding: 7px;
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: #191970;
+            color: #C960A5;
             background-color: white;
         }
 
@@ -57,7 +57,7 @@
         .btnback:hover {
             box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
             text-decoration: none;
-            background-color: #191970;
+            background-color: #C960A5;
             color: white;
         }
 
@@ -70,7 +70,7 @@
 
         /* Design do hover / quando passamos por cima do cabeçalho da tabela */ 
         .hover:hover{
-            background-color:#FFF775;
+            background-color:#C960A5;
             padding: 1px;
         }
 
@@ -152,16 +152,16 @@
             z-index: 9999; 
             padding:5px;
             background-color: white;
-            color: #191970;
+            color: #C960A5;
             border-radius: 5px;
             font-size: 16px;
-            border: 2px solid #191970;
+            border: 2px solid #C960A5;
         }
         
         .topo:hover {
             box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
             text-decoration: none;
-            background-color: #191970;
+            background-color: #C960A5;
             color: white;
         }
 
