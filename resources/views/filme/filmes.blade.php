@@ -20,10 +20,32 @@
         <style>
 
             body{
-                background-color: #A9AAF7;
+                /*background-color: #A9AAF7; */
                 padding: 10px;
                 color: black;
             }
+
+        /* background animado */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgb(10, 10, 50) 0%, rgb(60, 10, 60) 100%);
+            z-index: -1;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+        }
 
             /* Design do botão back to welcome page */
             .back {
@@ -167,173 +189,178 @@
 
     <body>
         <main>
-        <div class="back">
-            <a type="button" href="/" class="btnback">
-                <i class="icon"></i>               
-            </a>
-        </div>
-
-            <center>
-                <h1>A nossa base de dados de filmes</h1>
-            </center>
-
-            <br>
-
-            <!-- form para pesquisar pelo titulo do filme -->
-            <center>
-                <label for="pesquisar" style="margin: 10px;">Pesquisar:</label>
-                <input type="text" id="searchInput" placeholder="Pesquisar filmes..."  style="width: 400px;"> 
-            </center>
-
-            <br>
-            <center>
-                    <!-- form para ordenar titulo por ASC e DESC -->
-                    <form id="ordenarForm" style="display: inline;">
-                        <label for="ordenacao">Título:</label>
-                        <select name="ordenacao" id="ordenacao">
-                            <option value="asc">A-Z ↑</option>
-                            <option value="desc">A-Z ↓</option>
-                        </select>
-                    </form>
-
-                    <!-- form para ordenar ano por ASC e DESC -->
-                    <form id="ordenarFormAno" style="display: inline;">
-                        <label for="ordenacaoAno">Ano:</label>
-                        <select name="ordenacaoAno" id="ordenacaoAno">
-                            <option value="asc">Ano ↑</option>
-                            <option value="desc">Ano ↓</option>
-                        </select>
-                    </form>
-
-                    <!-- form para ordenar filmes por rating IMDb ASC e DESC -->
-                    <form id="ordenarFormRating" style="display: inline;">
-                        <label for="ordenacaoRating">IMDb Rating:</label>
-                        <select name="ordenacaoRating" id="ordenacaoRating">
-                            <option value="asc">⭐ ↑</option>
-                            <option value="desc">⭐ ↓</option>
-                        </select>
-                    </form>
-
-                    <!-- form para ordenar filmes por user rating ASC e DESC -->
-                    <form id="ordenarUserRating" style="display: inline;">
-                        <label for="userRating">User Rating:</label>
-                        <select name="userRating" id="userRating">
-                            <option value="asc">⭐ ↑</option>
-                            <option value="desc">⭐ ↓</option>
-                        </select>
-                    </form>
-
-                    <!-- form para filtrar filmes por género -->
-                    <form id="filtrarPorGeneroForm" style="display: inline;">
-                        <label for="genero">Género:</label>
-                        <select name="genero" id="genero">
-                            <option value="">Todos</option>
-                            @foreach ($generos->unique('genero') as $genero) <!-- unique é para o nome do genero aparecer apenas 1x -->
-                                <option value="{{ $genero->genero }}">{{ $genero->genero }}</option>
-                            @endforeach
-                        </select>
-                    </form>
-
-                    <!-- form para filtrar filmes por plataforma -->
-                    <form id="filtrarPorPlataformaForm" style="display: inline;">
-                        <label for="plataforma">Plataforma:</label>
-                        <select name="plataforma" id="plataforma">
-                            <option value="">Todos</option>
-                            @foreach ($plataformas as $plataforma)
-                                <option value="{{ $plataforma->plataforma }}">{{ $plataforma->plataforma }}</option>
-                            @endforeach
-                        </select>
-                    </form>
-
-                    <!-- form para filtrar filmes por classificação etária -->
-                    <form id="filtrarPorClassificacaoForm" style="display: inline;">
-                        <label for="classificacao">Classificação:</label>
-                        <select name="classificacao" id="classificacao">
-                            <option value="">Todos</option>
-                            @foreach ($classificacoes as $classificacao)
-                                <option value="{{ $classificacao->classificacao }}">{{ $classificacao->classificacao }}</option>
-                            @endforeach
-                        </select>
-                    </form>
-
-                    <!-- form para filtrar filmes por paises -->
-                    <form id="filtrarPorPaisForm" style="display: inline;">
-                        <label for="pais">País:</label>
-                        <select name="pais" id="pais">
-                            <option value="">Todos</option>
-                            @foreach ($paises as $pais)
-                                <option value="{{ $pais->pais }}">{{ $pais->pais }}</option>
-                            @endforeach
-                        </select>
-                    </form>                
-            </center>
-
+        <canvas id="particle-canvas"></canvas> <!-- background animado -->
+        <div class="container">
             
-            <!-- tabela de filmes -->
-            <center>
+            <div class="back">
+                <a type="button" href="/" class="btnback">
+                    <i class="icon"></i>               
+                </a>
+            </div>
+
+                <center>
+                    <h1>A nossa base de dados de filmes</h1>
+                </center>
+
                 <br>
-                <a type='button' class="btn add pulser" href="{{route('filme.create')}}">Adicionar Filme</a>
-                <br><br>
-                <table class="table">
-                    <thead>
-                        <tr class="hover">
-                        <th scope="col">Título 🎥</th>
-                        <th scope="col">Ano 📅</th>
-                        <th scope="col">Classificação</th>
-                        <th scope="col">País 🌍</th>
-                        <th scope="col">Plataforma</th>
-                        <th scope="col">Género</th>
-                        <th scope="col">IMDb Rating ⭐</th>
-                        <th scope="col">User Rating ⭐</th>
-                        <th scope="col">IMDb</th>
-                        <th colspan=3><center>Ações</th></center>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($filmes as $filme) 
-                            <tr class="hover2 filme-item">
-                            <td>{{ $filme->titulo }}</td>
-                            <td class="filme-ano">{{ $filme->ano }}</td>
-                            <td>{{ $filme->classificacao }}</td>
-                            <td>{{ $filme->pais }}</td>
-                            <td>{{ $filme->plataforma }}</td>
-                            <td>
-                            @if (isset($filmesComGeneros[$filme->id_filme]))
-                                @foreach ($filmesComGeneros[$filme->id_filme] as $genero)
-                                    {{ $genero }} <br>
+
+                <!-- form para pesquisar pelo titulo do filme -->
+                <center>
+                    <label for="pesquisar" style="margin: 10px;">Pesquisar:</label>
+                    <input type="text" id="searchInput" placeholder="Pesquisar filmes..."  style="width: 400px;"> 
+                </center>
+
+                <br>
+                <center>
+                        <!-- form para ordenar titulo por ASC e DESC -->
+                        <form id="ordenarForm" style="display: inline;">
+                            <label for="ordenacao">Título:</label>
+                            <select name="ordenacao" id="ordenacao">
+                                <option value="asc">A-Z ↑</option>
+                                <option value="desc">A-Z ↓</option>
+                            </select>
+                        </form>
+
+                        <!-- form para ordenar ano por ASC e DESC -->
+                        <form id="ordenarFormAno" style="display: inline;">
+                            <label for="ordenacaoAno">Ano:</label>
+                            <select name="ordenacaoAno" id="ordenacaoAno">
+                                <option value="asc">Ano ↑</option>
+                                <option value="desc">Ano ↓</option>
+                            </select>
+                        </form>
+
+                        <!-- form para ordenar filmes por rating IMDb ASC e DESC -->
+                        <form id="ordenarFormRating" style="display: inline;">
+                            <label for="ordenacaoRating">IMDb Rating:</label>
+                            <select name="ordenacaoRating" id="ordenacaoRating">
+                                <option value="asc">⭐ ↑</option>
+                                <option value="desc">⭐ ↓</option>
+                            </select>
+                        </form>
+
+                        <!-- form para ordenar filmes por user rating ASC e DESC -->
+                        <form id="ordenarUserRating" style="display: inline;">
+                            <label for="userRating">User Rating:</label>
+                            <select name="userRating" id="userRating">
+                                <option value="asc">⭐ ↑</option>
+                                <option value="desc">⭐ ↓</option>
+                            </select>
+                        </form>
+
+                        <!-- form para filtrar filmes por género -->
+                        <form id="filtrarPorGeneroForm" style="display: inline;">
+                            <label for="genero">Género:</label>
+                            <select name="genero" id="genero">
+                                <option value="">Todos</option>
+                                @foreach ($generos->unique('genero') as $genero) <!-- unique é para o nome do genero aparecer apenas 1x -->
+                                    <option value="{{ $genero->genero }}">{{ $genero->genero }}</option>
                                 @endforeach
-                            @endif
-                            </td>
-                            <td class="filme-rating">{{ $filme->rating }}</td>
-                            <td>
-                                @if ($filme->averageUserRating !== null)
-                                    {{ number_format($filme->averageUserRating, 1) }} <!-- average rating do user com uma casa decimal -->
-                                @else
-                                    <p>0.0</p>
-                                @endif
-                            </td>    
-                            <td><a href="{{ $filme->link_imdb }}" target="_blank" class="imdbbutton">IMDb</a></td>
-                            <td>
-                                <a type='button' class="btn btn-success" href="{{ route('filme.show', $filme->id_filme)}}">🛈</a> <!--ir à route, e está lá user.show; buscar aos users o id-->
-                            </td>
-                            @if(auth()->check() && auth()->user()->role === 'admin') <!-- só admins têm acesso a editar e eliminar-->
-                                <td>
-                                    <a type='button' class="btn btn-primary" href="{{ route('filme.edit', $filme->id_filme)}}">✏️</a>
+                            </select>
+                        </form>
+
+                        <!-- form para filtrar filmes por plataforma -->
+                        <form id="filtrarPorPlataformaForm" style="display: inline;">
+                            <label for="plataforma">Plataforma:</label>
+                            <select name="plataforma" id="plataforma">
+                                <option value="">Todos</option>
+                                @foreach ($plataformas as $plataforma)
+                                    <option value="{{ $plataforma->plataforma }}">{{ $plataforma->plataforma }}</option>
+                                @endforeach
+                            </select>
+                        </form>
+
+                        <!-- form para filtrar filmes por classificação etária -->
+                        <form id="filtrarPorClassificacaoForm" style="display: inline;">
+                            <label for="classificacao">Classificação:</label>
+                            <select name="classificacao" id="classificacao">
+                                <option value="">Todos</option>
+                                @foreach ($classificacoes as $classificacao)
+                                    <option value="{{ $classificacao->classificacao }}">{{ $classificacao->classificacao }}</option>
+                                @endforeach
+                            </select>
+                        </form>
+
+                        <!-- form para filtrar filmes por paises -->
+                        <form id="filtrarPorPaisForm" style="display: inline;">
+                            <label for="pais">País:</label>
+                            <select name="pais" id="pais">
+                                <option value="">Todos</option>
+                                @foreach ($paises as $pais)
+                                    <option value="{{ $pais->pais }}">{{ $pais->pais }}</option>
+                                @endforeach
+                            </select>
+                        </form>                
+                </center>
+
+                
+                <!-- tabela de filmes -->
+                <center>
+                    <br>
+                    <a type='button' class="btn add pulser" href="{{route('filme.create')}}">Adicionar Filme</a>
+                    <br><br>
+                    <table class="table">
+                        <thead>
+                            <tr class="hover">
+                            <th scope="col">Título 🎥</th>
+                            <th scope="col">Ano 📅</th>
+                            <th scope="col">Classificação</th>
+                            <th scope="col">País 🌍</th>
+                            <th scope="col">Plataforma</th>
+                            <th scope="col">Género</th>
+                            <th scope="col">IMDb Rating ⭐</th>
+                            <th scope="col">User Rating ⭐</th>
+                            <th scope="col">IMDb</th>
+                            <th colspan=3><center>Ações</th></center>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($filmes as $filme) 
+                                <tr class="hover2 filme-item">
+                                <td>{{ $filme->titulo }}</td>
+                                <td class="filme-ano">{{ $filme->ano }}</td>
+                                <td>{{ $filme->classificacao }}</td>
+                                <td>{{ $filme->pais }}</td>                               
+                                <td>{{ $filme->plataforma }}                             
                                 </td>
                                 <td>
-                                    <form action ="{{ route('filme.delete', $filme->id_filme)}}" method="post">
-                                    @method('delete')
-                                    @csrf
-                                    <input type="submit" class="btn btn-danger" value="⛌">
-                                    </form>
-                                </td>       
-                            @endif                   
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </center>
-            <br>
+                                @if (isset($filmesComGeneros[$filme->id_filme]))
+                                    @foreach ($filmesComGeneros[$filme->id_filme] as $genero)
+                                        {{ $genero }} <br>
+                                    @endforeach
+                                @endif
+                                </td>
+                                <td class="filme-rating">{{ $filme->rating }}</td> <!-- imdb rating -->
+                                <td class="user-rating">
+                                    @if ($filme->averageUserRating !== null)
+                                        {{ number_format($filme->averageUserRating, 1) }} <!-- average rating do user com uma casa decimal -->
+                                    @else
+                                        <p>0.0</p> <!-- se nao tiver ratings colocar 0.0 -->
+                                    @endif
+                                </td>    
+                                <td><a href="{{ $filme->link_imdb }}" target="_blank" class="imdbbutton">IMDb</a></td>
+                                <td>
+                                    <a type='button' class="btn btn-success" href="{{ route('filme.show', $filme->id_filme)}}">🛈</a> <!--ir à route, e está lá user.show; buscar aos users o id-->
+                                </td>
+                                @if(auth()->check() && auth()->user()->role === 'admin') <!-- só admins têm acesso a editar e eliminar-->
+                                    <td>
+                                        <a type='button' class="btn btn-primary" href="{{ route('filme.edit', $filme->id_filme)}}">✏️</a>
+                                    </td>
+                                    <td>
+                                        <form action ="{{ route('filme.delete', $filme->id_filme)}}" method="post">
+                                        @method('delete')
+                                        @csrf
+                                        <input type="submit" class="btn btn-danger" value="⛌">
+                                        </form>
+                                    </td>       
+                                @endif                   
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </center>
+                <br>
+        </div>
             <a type='button' href="#top" class="topo">↑</a> <!-- botão voltar ao topo-->
 
 
@@ -433,8 +460,8 @@
                     const ufilmes = Array.from(document.querySelectorAll('.filme-item'));
 
                     ufilmes.sort(function (a, b) {
-                        const uratingA = parseFloat(a.querySelector('td:nth-child(8)').textContent);
-                        const uratingB = parseFloat(b.querySelector('td:nth-child(8)').textContent);
+                        const uratingA = parseFloat(a.querySelector('.user-rating').textContent);
+                        const uratingB = parseFloat(b.querySelector('.user-rating').textContent);
 
                         if (ordenacaoUserRating === 'asc') {
                             return uratingA - uratingB; // ordena por menor rating (ASC)
@@ -520,6 +547,122 @@
                 });
             </script>
 
+        <!-- background animado -->
+        <script>
+            function normalPool(o){var r=0;do{var a=Math.round(normal({mean:o.mean,dev:o.dev}));if(a<o.pool.length&&a>=0)return o.pool[a];r++}while(r<100)}function randomNormal(o){if(o=Object.assign({mean:0,dev:1,pool:[]},o),Array.isArray(o.pool)&&o.pool.length>0)return normalPool(o);var r,a,n,e,l=o.mean,t=o.dev;do{r=(a=2*Math.random()-1)*a+(n=2*Math.random()-1)*n}while(r>=1);return e=a*Math.sqrt(-2*Math.log(r)/r),t*e+l}
+
+            const NUM_PARTICLES = 600; //mudar numero de particulas
+            const PARTICLE_SIZE = 0.4; //tamanho das particulas
+            const SPEED = 30000; //velocidade a que as particulas andam
+
+            let particles = [];
+
+            function rand(low, high) {
+            return Math.random() * (high - low) + low;
+            }
+
+            function createParticle(canvas) {
+            const colour = {
+                r: 255,
+                g: randomNormal({ mean: 125, dev: 20 }),
+                b: 50,
+                a: rand(0, 1),
+            };
+            return {
+                x: -2,
+                y: -2,
+                diameter: Math.max(0, randomNormal({ mean: PARTICLE_SIZE, dev: PARTICLE_SIZE / 2 })),
+                duration: randomNormal({ mean: SPEED, dev: SPEED * 0.1 }),
+                amplitude: randomNormal({ mean: 16, dev: 2 }),
+                offsetY: randomNormal({ mean: 0, dev: 10 }),
+                arc: Math.PI * 2,
+                startTime: performance.now() - rand(0, SPEED),
+                colour: `rgba(${colour.r}, ${colour.g}, ${colour.b}, ${colour.a})`,
+            }
+            }
+
+            function moveParticle(particle, canvas, time) {
+            const progress = ((time - particle.startTime) % particle.duration) / particle.duration;
+            return {
+                ...particle,
+                x: progress,
+                y: ((Math.sin(progress * particle.arc) * particle.amplitude) + particle.offsetY),
+            };
+            }
+
+            function drawParticle(particle, canvas, ctx) {
+            canvas = document.getElementById('particle-canvas');
+            const vh = canvas.height / 100;
+
+            ctx.fillStyle = particle.colour;
+            ctx.beginPath();
+            ctx.ellipse(
+                particle.x * canvas.width,
+                particle.y * vh + (canvas.height / 2),
+                particle.diameter * vh,
+                particle.diameter * vh,
+                0,
+                0,
+                2 * Math.PI
+            );
+            ctx.fill();
+            }
+
+            function draw(time, canvas, ctx) {
+            // Move particles
+            particles.forEach((particle, index) => {
+                particles[index] = moveParticle(particle, canvas, time);
+            })
+
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the particles
+            particles.forEach((particle) => {
+                drawParticle(particle, canvas, ctx);
+            })
+
+            // Schedule next frame
+            requestAnimationFrame((time) => draw(time, canvas, ctx));
+            }
+
+            function initializeCanvas() {
+            let canvas = document.getElementById('particle-canvas');
+            canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+            canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+            let ctx = canvas.getContext("2d");
+
+            window.addEventListener('resize', () => {
+                canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+                canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+                ctx = canvas.getContext("2d");
+            })
+
+            return [canvas, ctx];
+            }
+
+            function startAnimation() {
+            const [canvas, ctx] = initializeCanvas();
+
+            // Create a bunch of particles
+            for (let i = 0; i < NUM_PARTICLES; i++) {
+                particles.push(createParticle(canvas));
+            }
+            
+            requestAnimationFrame((time) => draw(time, canvas, ctx));
+            };
+
+            // Start animation when document is loaded
+            (function () {
+            if (document.readystate !== 'loading') {
+                startAnimation();
+            } else {
+                document.addEventListener('DOMContentLoaded', () => {
+                startAnimation();
+                })
+            }
+            }());
+        </script>
 
         </main>
     <!-- Optional JavaScript -->

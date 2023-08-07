@@ -66,7 +66,7 @@ class HomeController extends Controller
             }
             $filmesComGeneros[$idFilme][] = $genero;
         }
-        
+
         $plataformas = DB::table('tb_plataformas')->get(); //criar esta variável, para passar para a view, onde vamos querer filtrar filmes por plataforma
         $classificacoes = DB::table('tb_classificacoes')->get(); //para filtrar por classificações
         $paises = DB::table('tb_paises')->get(); //para filtrar tb por paises
@@ -78,7 +78,7 @@ class HomeController extends Controller
             $id_filme = $filme->id_filme;
             $averageUserRating = DB::table('tb_users_rating')->where('id_filme', $id_filme)->avg('user_rating');
             $filme->averageUserRating = $averageUserRating;
-        }
+        }       
             
         //criar array associativo para passar todas as informações/variáveis para a view:
             $dados = [
@@ -183,6 +183,9 @@ class HomeController extends Controller
             ->get();
 
             $averageRating = $this->calculateAverageRating($id_filme); //nota: a função calculateAverageRating está no fim desta página
+        
+        //para ver a imagem da plataforma em cada detalhe do filme
+        $plataforma = DB::table('tb_plataformas')->where('plataforma', $filmes->plataforma)->first();
             
         //criar array associativo para passar todas as informações para a view:
         $dados = [
@@ -192,6 +195,7 @@ class HomeController extends Controller
             'comentarios' => $comentarios,
             'usersrating' => $usersrating,
             'averageRating' => $averageRating,
+            'plataforma' => $plataforma,
         ];
         
         return view('filme.filmes_show', $dados);
@@ -254,4 +258,5 @@ class HomeController extends Controller
 
         return number_format($averageRating, 1); //formata a média dos user ratings com uma casa decimal
     }
+
 }
