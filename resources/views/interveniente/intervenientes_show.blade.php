@@ -105,7 +105,7 @@
         }
 
         h1{
-            color: white;
+            color: #C960A5;
             font-size: 40px;
             border-bottom: 2px solid white;
             padding: 10px;
@@ -113,10 +113,6 @@
 
         h2{
             color: white;
-        }
-
-        p{
-            font-size: 26px;
         }
 
         /* quando passo por cima de links */
@@ -169,7 +165,6 @@
     <body>
 
     <canvas id="particle-canvas"></canvas> <!-- background animado -->
-    <div class="container">
 
         <div class="back">
             <a type="button" href="{{ route('interveniente.index') }}" class="btnback"> <!-- voltar à pagina dos intervenientes-->
@@ -191,13 +186,26 @@
         @endauth
         <br>
 
+        <!-- Title Card -->
         <center>
-            <h2>Filmes em que {{ $interveniente->interveniente }} participou:</h2>
-            
-                @foreach ($filmes as $filme)
-                <p><a target=blank href="{{ route('filme.show', $filme->id_filme) }}">{{ $filme->titulo }}</a> - {{ $filme->ano }}<br></p>
+          <div class="card hover" style="width: 16rem;">
+
+            <img src="http://localhost/proj_Final/Imagens/{{ $interveniente->imagem }}" class="card-img-top" alt="{{ $interveniente->imagem }}">
+            <div class="card-body">
+              <h3 class="card-title" style="color: #C960A5;">{{ $interveniente->interveniente }}</h3>
+              <p class="card-text"><b>País:</b> {{ $pais->pais }}</p>
+              <p class="card-text"><b>Função:</b> 
+                @foreach (collect($detalhesIntervenientes)->unique('funcao') as $interveniente)
+                    {{ $interveniente->funcao }}
                 @endforeach
-            
+                </p>
+                <p class="card-text"><b>Filmes em que participou:</b> <br>
+                    @foreach ($filmes as $filme)
+                        <p><a target=blank href="{{ route('filme.show', $filme->id_filme) }}">{{ $filme->titulo }}</a> - {{ $filme->ano }}<br></p>
+                    @endforeach
+                </p>             
+            </div>
+          </div>
         </center>
 
         <!-- background animado -->

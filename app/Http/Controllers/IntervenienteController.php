@@ -60,8 +60,22 @@ class IntervenienteController extends Controller
         $filmes = Filme::whereHas('intervenientes', function ($query) use ($id_interveniente) {
             $query->where('tb_intervenientes.id_interveniente', $id_interveniente);
         })->get();
+
+        $pais = DB::table('tb_paises')->where('id_pais', $interveniente->id_pais)->first();
+
+        //tabelas tb_detalhesfilmes + tb_intervenientes + tb_funcoes:
+        $detalhesIntervenientes = DB::table('tb_detalhesfilmes')
+             ->select(
+                'tb_intervenientes.interveniente',
+                'tb_funcoes.funcao'
+             )
+             ->join('tb_intervenientes', 'tb_detalhesfilmes.id_interveniente', '=', 'tb_intervenientes.id_interveniente')
+             ->join('tb_detalhes', 'tb_detalhesfilmes.id_interveniente', '=', 'tb_detalhes.id_interveniente')
+             ->join('tb_funcoes', 'tb_detalhes.id_funcao', '=', 'tb_funcoes.id_funcao')
+             ->where('tb_intervenientes.id_interveniente', $id_interveniente)
+             ->get();
         
-        return view('interveniente.intervenientes_show', compact('interveniente', 'filmes'));
+        return view('interveniente.intervenientes_show', compact('interveniente', 'filmes', 'detalhesIntervenientes', 'pais'));
     }
 
     //método necessário para adicionar e exibir intervenientes preferidos no perfil

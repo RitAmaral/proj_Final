@@ -255,9 +255,9 @@
             function normalPool(o){var r=0;do{var a=Math.round(normal({mean:o.mean,dev:o.dev}));if(a<o.pool.length&&a>=0)return o.pool[a];r++}while(r<100)}function randomNormal(o){if(o=Object.assign({mean:0,dev:1,pool:[]},o),Array.isArray(o.pool)&&o.pool.length>0)return normalPool(o);var r,a,n,e,l=o.mean,t=o.dev;do{r=(a=2*Math.random()-1)*a+(n=2*Math.random()-1)*n}while(r>=1);return e=a*Math.sqrt(-2*Math.log(r)/r),t*e+l}
 
             const NUM_PARTICLES = 600; //mudar numero de particulas
-            const PARTICLE_SIZE = 0.5; //tamanho das particulas
-            const SPEED = 20000; //velocidade a que as particulas andam
-            
+            const PARTICLE_SIZE = 0.4; //tamanho das particulas
+            const SPEED = 40000; //velocidade a que as particulas andam
+
             let particles = [];
 
             function rand(low, high) {

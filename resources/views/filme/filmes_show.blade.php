@@ -105,7 +105,7 @@
         }
 
         h1{
-            color: white;
+            color: #C960A5;
             font-size: 40px;
             border-bottom: 2px solid white;
             padding: 10px;
@@ -168,7 +168,7 @@
                 <div class="card hover" style="width: 18rem;">
                 <img src="http://localhost/proj_Final/Imagens/{{ $filmes->imagem }}" class="card-img-top" alt="{{ $filmes->titulo }}">
                 <div class="card-body">
-                    <h3 class="card-title">{{$filmes->titulo}}</h3>
+                    <h3 class="card-title" style="color: #C960A5;">{{$filmes->titulo}}</h3>
                     <p class="card-text">
                         <b>Ano: </b> {{$filmes->ano}} <br>
                         <b>IMDb Rating: </b> {{$filmes->rating}} <br>

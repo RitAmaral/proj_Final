@@ -40,6 +40,7 @@
       h1{
         border-bottom: 2px solid #E4A063;
         padding: 10px;
+        color: #E4A063;
       }
 
       /* Design do botão back to users page */

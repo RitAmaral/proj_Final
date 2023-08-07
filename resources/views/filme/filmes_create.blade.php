@@ -84,7 +84,7 @@
 
         /* Design do header 1 */
         h1{
-            color: white;
+            color: #C960A5;
             font-size: 40px;
             border-bottom: 2px solid white;
             padding: 10px;
