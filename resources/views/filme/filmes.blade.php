@@ -259,6 +259,8 @@
                             </select>
                         </form>
 
+                        <br>
+                        
                         <!-- form para filtrar filmes por plataforma -->
                         <form id="filtrarPorPlataformaForm" style="display: inline;">
                             <label for="plataforma">Plataforma:</label>
