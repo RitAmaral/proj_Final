@@ -15,14 +15,14 @@
     <title>Editar Utilizador</title>
     <style>
 
-      /* background animado */
-      html, body { 
+        /* background animado */
+        html, body { 
             margin: 0;
             padding: 0;
             height: 100%;
-      }
+        }
 
-      #particle-canvas {
+        #particle-canvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -30,21 +30,21 @@
             height: 100%;
             background: linear-gradient(to bottom, rgb(10, 10, 50) 0%, rgb(60, 10, 60) 100%);
             z-index: -1;
-      }
+        }
 
-      .container {
+        .container {
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
-      }
-      
-      h1{
-        border-bottom: 2px solid #E4A063;
-        padding: 10px;
-        color: #E4A063;
-      }
+        }
+        
+        h1{
+            border-bottom: 2px solid #E4A063;
+            padding: 10px;
+            color: #E4A063;
+        }
 
-      /* Design do botão back to users page */
-      .back {
+        /* Design do botão back to users page */
+        .back {
             position: absolute;
             top: 0;
             right: 0;
@@ -64,7 +64,7 @@
             background-color: white;
         }
 
-         /* Design do icon da homepage*/
+            /* Design do icon da homepage*/
         .icon {
             width: 24px; /* Defina a do ícone */
             height: 24px; /* Defina a altura do ícone */
@@ -81,7 +81,7 @@
         }
 
         /* Design do botão gravar info */
-      .gravar {
+        .gravar {
             width: fit-content;
             background: #E4A063;
             border-radius: 5px;
@@ -94,9 +94,10 @@
             color: #E4A063;
         }
 
-
     </style>
+
   </head>
+
   <body>
     <main class="container">
 
@@ -135,7 +136,7 @@
             </div>
 
             <br>
-        <button type="submit" class="btn gravar">Gravar alteração</button>
+            <button type="submit" class="btn gravar">Gravar alteração</button>
         </form>
 
         <!-- background animado -->

@@ -39,11 +39,11 @@
       }
 
       h1{
-        border-bottom: 2px solid #E4A063;
+        border-bottom: 2px solid white;
         padding: 10px;
         color: #E4A063;
       }
-      /* Design do hover / quando passamos por cima do h1 e do cabeçalho da tabela */ 
+      /* Design do hover / quando passamos por cima do cabeçalho da tabela */ 
       .hover:hover{
         background-color:#E4A063;
         padding: 1px;
@@ -105,7 +105,17 @@
         </div>
 
         <center><h1>Utilizadores na nossa base de dados</h1></center>
+
         <br>
+
+        <!-- form para pesquisar utilizadores -->
+        <center>
+            <label for="pesquisar" style="margin: 10px;">Pesquisar:</label>
+            <input type="text" id="searchInput" placeholder="Pesquisar utilizadores..."  style="width: 400px;"> 
+        </center>
+
+        <br>
+
         <table class="table">
             <thead>
                 <tr class="hover">
@@ -118,7 +128,7 @@
             </thead>
             <tbody>
                 @foreach($users as $user) <!--função foreach, para todos os users da Base de Dados, escrever individualmente como user?-->
-                <tr class="hover2">
+                <tr class="hover2 utilizadores-item"> <!-- colocar class utilizadores-item por causa do javascript -->
                     <th scope="row">{{$user->id}}</th> <!--id, name, email, created_at são os dados que aparecerem no mysql-->
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
@@ -142,13 +152,34 @@
             </tbody>
         </table>
 
+        <!-- Javascript - necessário para a pesquisa de utilizadores ir diminuindo  -->
+        <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const searchInput = document.getElementById('searchInput'); //mesmo id do form
+                    const utilizadorItems = document.querySelectorAll('.utilizadores-item'); //colocar class na tabela
+
+                    searchInput.addEventListener('input', function (event) {
+                        const searchTerm = event.target.value.trim().toLowerCase();
+
+                        utilizadorItems.forEach(item => {
+                            const nomeUtilizador = item.querySelector('td:nth-child(2)').textContent.toLowerCase(); //2ª linha da tabela
+                            if (nomeUtilizador.includes(searchTerm)) {
+                                item.style.display = ''; //exibir a linha
+                            } else {
+                                item.style.display = 'none'; //ocultar a linha
+                            }
+                        });
+                    });
+                });
+        </script>
+
          <!-- background animado -->
          <script>
             function normalPool(o){var r=0;do{var a=Math.round(normal({mean:o.mean,dev:o.dev}));if(a<o.pool.length&&a>=0)return o.pool[a];r++}while(r<100)}function randomNormal(o){if(o=Object.assign({mean:0,dev:1,pool:[]},o),Array.isArray(o.pool)&&o.pool.length>0)return normalPool(o);var r,a,n,e,l=o.mean,t=o.dev;do{r=(a=2*Math.random()-1)*a+(n=2*Math.random()-1)*n}while(r>=1);return e=a*Math.sqrt(-2*Math.log(r)/r),t*e+l}
 
-            const NUM_PARTICLES = 600;
-            const PARTICLE_SIZE = 0.5; // View heights
-            const SPEED = 20000; // Milliseconds
+            const NUM_PARTICLES = 600; //num de particulas
+            const PARTICLE_SIZE = 0.5; //tamanho das particulas
+            const SPEED = 20000; //veloc das particulas
 
             let particles = [];
 
@@ -156,7 +187,7 @@
             return Math.random() * (high - low) + low;
             }
 
-            function createParticle(canvas) {
+            function createParticle(canvas) { //mudar cor das particulas
             const colour = {
                 r: 255,
                 g: randomNormal({ mean: 125, dev: 20 }),

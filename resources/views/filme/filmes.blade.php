@@ -19,11 +19,11 @@
         <!-- Styles -->
         <style>
 
-            body{
-                /*background-color: #A9AAF7; */
-                padding: 10px;
-                color: black;
-            }
+        body{
+            /*background-color: #A9AAF7; */
+            padding: 10px;
+            color: black;
+        }
 
         /* background animado */
         html, body {
@@ -47,142 +47,142 @@
             padding: 10px;
         }
 
-            /* Design do botão back to welcome page */
-            .back {
-                position: absolute;
-                top: 0;
-                right: 0;
-                padding: 20px;
-                text-decoration: none;
-            }
+        /* Design do botão back to welcome page */
+        .back {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 20px;
+            text-decoration: none;
+        }
 
-            .btnback {
-                border: 2px solid #C960A5;
-                border-radius: 5px;
-                margin-right: 10px;
-                padding: 7px;
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: #C960A5;
-                background-color: white;
-            }
+        .btnback {
+            border: 2px solid #C960A5;
+            border-radius: 5px;
+            margin-right: 10px;
+            padding: 7px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #C960A5;
+            background-color: white;
+        }
 
-            /* Design do icon da homepage */
-            .icon {
-                width: 24px; /* Defina a largura do icon */
-                height: 24px; /* Defina a altura do icon */
-                background-image: url("{{ asset('icons/homepage.png') }}");
-                background-size: cover;
-                background-repeat: no-repeat;          
-            }
+        /* Design do icon da homepage */
+        .icon {
+            width: 24px; /* Defina a largura do icon */
+            height: 24px; /* Defina a altura do icon */
+            background-image: url("{{ asset('icons/homepage.png') }}");
+            background-size: cover;
+            background-repeat: no-repeat;          
+        }
 
-            .btnback:hover {
-                box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-                text-decoration: none;
-                background-color: #C960A5;
-                color: white;
-            }
+        .btnback:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+            text-decoration: none;
+            background-color: #C960A5;
+            color: white;
+        }
 
-            h1{
-                color: #C960A5;
-                font-size: 40px;
-                border-bottom: 2px solid white;
-                padding: 10px;
-            }
+        h1{
+            color: #C960A5;
+            font-size: 40px;
+            border-bottom: 2px solid white;
+            padding: 10px;
+        }
 
-            /* Design do hover / quando passamos por cima do cabeçalho da tabela */ 
-            .hover:hover{
-                background-color:#C960A5;
-                padding: 1px;
-            }
+        /* Design do hover / quando passamos por cima do cabeçalho da tabela */ 
+        .hover:hover{
+            background-color:#C960A5;
+            padding: 1px;
+        }
 
-            /* Design do hover2 / quando passamos por cima das rows da tabela */ 
-            .hover2:hover{
-                background-color:#fff;
-                padding: 1px;
-            }
+        /* Design do hover2 / quando passamos por cima das rows da tabela */ 
+        .hover2:hover{
+            background-color:#fff;
+            padding: 1px;
+        }
 
-            /* Design do botão IMDB */ 
-            .imdbbutton {
-                display: inline-block;
-                padding: 8px 16px;
-                background-color: #f5de50;
-                color: black;
-                font-size: 14px;
-                font-weight: bold;
-                text-decoration: none;
-                border-radius: 4px;
-                border: none;
-                cursor: pointer;
-                transition: background-color 0.3s;
-            }
-            
-            /* Design do botão IMDB quando passamos por cima */ 
-            .imdbbutton:hover {
-                background-color: #eac13e;
-                text-decoration: none;
-                color: white;
-            }
+        /* Design do botão IMDB */ 
+        .imdbbutton {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #f5de50;
+            color: black;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        /* Design do botão IMDB quando passamos por cima */ 
+        .imdbbutton:hover {
+            background-color: #eac13e;
+            text-decoration: none;
+            color: white;
+        }
 
-            /* Design do botão Adicionar Filme */
-            .pulser {
-                width: fit-content;
-                background: #C960A5;
-                border-radius: 5px;
-                position: relative;
-                color: #fff;
-            }
+        /* Design do botão Adicionar Filme */
+        .pulser {
+            width: fit-content;
+            background: #C960A5;
+            border-radius: 5px;
+            position: relative;
+            color: #fff;
+        }
 
-            .pulser::after {
-                animation: pulse 4000ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite;
-            }
+        .pulser::after {
+            animation: pulse 4000ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite;
+        }
 
-            @keyframes pulse {
-                0% {opacity: 0;}
-                50% {
-                transform: scale(1.4);
-                opacity: 0.4;
-                }
+        @keyframes pulse {
+            0% {opacity: 0;}
+            50% {
+            transform: scale(1.4);
+            opacity: 0.4;
             }
+        }
 
-            .pulser::after {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                background: #C960A5;
-                border-radius: 5px;
-                z-index: -1;
-            }
+        .pulser::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #C960A5;
+            border-radius: 5px;
+            z-index: -1;
+        }
 
-            .add:hover{
-                background-color: white;
-                color: #C960A5;
-            }
+        .add:hover{
+            background-color: white;
+            color: #C960A5;
+        }
 
-            /* Botao voltar ao topo */
-            .topo {
-                position: fixed;
-                bottom: 20px; 
-                left: 20px;
-                z-index: 9999; 
-                padding:5px;
-                background-color: white;
-                color: #C960A5;
-                border-radius: 5px;
-                font-size: 16px;
-                border: 2px solid #C960A5;
-            }
-            
-            .topo:hover {
-                box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-                text-decoration: none;
-                background-color: #C960A5;
-                color: white;
-            }
+        /* Botao voltar ao topo */
+        .topo {
+            position: fixed;
+            bottom: 20px; 
+            left: 20px;
+            z-index: 9999; 
+            padding:5px;
+            background-color: white;
+            color: #C960A5;
+            border-radius: 5px;
+            font-size: 16px;
+            border: 2px solid #C960A5;
+        }
+        
+        .topo:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+            text-decoration: none;
+            background-color: #C960A5;
+            color: white;
+        }
         
         </style>
     </head>
@@ -212,87 +212,87 @@
 
                 <br>
                 <center>
-                        <!-- form para ordenar titulo por ASC e DESC -->
-                        <form id="ordenarForm" style="display: inline;">
-                            <label for="ordenacao">Título:</label>
-                            <select name="ordenacao" id="ordenacao">
-                                <option value="asc">A-Z ↑</option>
-                                <option value="desc">A-Z ↓</option>
-                            </select>
-                        </form>
+                    <!-- form para ordenar titulo por ASC e DESC -->
+                    <form id="ordenarForm" style="display: inline;">
+                        <label for="ordenacao">Título:</label>
+                        <select name="ordenacao" id="ordenacao">
+                            <option value="asc">A-Z ↑</option>
+                            <option value="desc">A-Z ↓</option>
+                        </select>
+                    </form>
 
-                        <!-- form para ordenar ano por ASC e DESC -->
-                        <form id="ordenarFormAno" style="display: inline;">
-                            <label for="ordenacaoAno">Ano:</label>
-                            <select name="ordenacaoAno" id="ordenacaoAno">
-                                <option value="asc">Ano ↑</option>
-                                <option value="desc">Ano ↓</option>
-                            </select>
-                        </form>
+                    <!-- form para ordenar ano por ASC e DESC -->
+                    <form id="ordenarFormAno" style="display: inline;">
+                        <label for="ordenacaoAno">Ano:</label>
+                        <select name="ordenacaoAno" id="ordenacaoAno">
+                            <option value="asc">Ano ↑</option>
+                            <option value="desc">Ano ↓</option>
+                        </select>
+                    </form>
 
-                        <!-- form para ordenar filmes por rating IMDb ASC e DESC -->
-                        <form id="ordenarFormRating" style="display: inline;">
-                            <label for="ordenacaoRating">IMDb Rating:</label>
-                            <select name="ordenacaoRating" id="ordenacaoRating">
-                                <option value="asc">⭐ ↑</option>
-                                <option value="desc">⭐ ↓</option>
-                            </select>
-                        </form>
+                    <!-- form para ordenar filmes por rating IMDb ASC e DESC -->
+                    <form id="ordenarFormRating" style="display: inline;">
+                        <label for="ordenacaoRating">IMDb Rating:</label>
+                        <select name="ordenacaoRating" id="ordenacaoRating">
+                            <option value="asc">⭐ ↑</option>
+                            <option value="desc">⭐ ↓</option>
+                        </select>
+                    </form>
 
-                        <!-- form para ordenar filmes por user rating ASC e DESC -->
-                        <form id="ordenarUserRating" style="display: inline;">
-                            <label for="userRating">User Rating:</label>
-                            <select name="userRating" id="userRating">
-                                <option value="asc">⭐ ↑</option>
-                                <option value="desc">⭐ ↓</option>
-                            </select>
-                        </form>
+                    <!-- form para ordenar filmes por user rating ASC e DESC -->
+                    <form id="ordenarUserRating" style="display: inline;">
+                        <label for="userRating">User Rating:</label>
+                        <select name="userRating" id="userRating">
+                            <option value="asc">⭐ ↑</option>
+                            <option value="desc">⭐ ↓</option>
+                        </select>
+                    </form>
 
-                        <!-- form para filtrar filmes por género -->
-                        <form id="filtrarPorGeneroForm" style="display: inline;">
-                            <label for="genero">Género:</label>
-                            <select name="genero" id="genero">
-                                <option value="">Todos</option>
-                                @foreach ($generos->unique('genero') as $genero) <!-- unique é para o nome do genero aparecer apenas 1x -->
-                                    <option value="{{ $genero->genero }}">{{ $genero->genero }}</option>
-                                @endforeach
-                            </select>
-                        </form>
+                    <!-- form para filtrar filmes por género -->
+                    <form id="filtrarPorGeneroForm" style="display: inline;">
+                        <label for="genero">Género:</label>
+                        <select name="genero" id="genero">
+                            <option value="">Todos</option>
+                            @foreach ($generos->unique('genero') as $genero) <!-- unique é para o nome do genero aparecer apenas 1x -->
+                                <option value="{{ $genero->genero }}">{{ $genero->genero }}</option>
+                            @endforeach
+                        </select>
+                    </form>
 
-                        <br>
-                        
-                        <!-- form para filtrar filmes por plataforma -->
-                        <form id="filtrarPorPlataformaForm" style="display: inline;">
-                            <label for="plataforma">Plataforma:</label>
-                            <select name="plataforma" id="plataforma">
-                                <option value="">Todos</option>
-                                @foreach ($plataformas as $plataforma)
-                                    <option value="{{ $plataforma->plataforma }}">{{ $plataforma->plataforma }}</option>
-                                @endforeach
-                            </select>
-                        </form>
+                    <br>
+                    
+                    <!-- form para filtrar filmes por plataforma -->
+                    <form id="filtrarPorPlataformaForm" style="display: inline;">
+                        <label for="plataforma">Plataforma:</label>
+                        <select name="plataforma" id="plataforma">
+                            <option value="">Todos</option>
+                            @foreach ($plataformas as $plataforma)
+                                <option value="{{ $plataforma->plataforma }}">{{ $plataforma->plataforma }}</option>
+                            @endforeach
+                        </select>
+                    </form>
 
-                        <!-- form para filtrar filmes por classificação etária -->
-                        <form id="filtrarPorClassificacaoForm" style="display: inline;">
-                            <label for="classificacao">Classificação:</label>
-                            <select name="classificacao" id="classificacao">
-                                <option value="">Todos</option>
-                                @foreach ($classificacoes as $classificacao)
-                                    <option value="{{ $classificacao->classificacao }}">{{ $classificacao->classificacao }}</option>
-                                @endforeach
-                            </select>
-                        </form>
+                    <!-- form para filtrar filmes por classificação etária -->
+                    <form id="filtrarPorClassificacaoForm" style="display: inline;">
+                        <label for="classificacao">Classificação:</label>
+                        <select name="classificacao" id="classificacao">
+                            <option value="">Todos</option>
+                            @foreach ($classificacoes as $classificacao)
+                                <option value="{{ $classificacao->classificacao }}">{{ $classificacao->classificacao }}</option>
+                            @endforeach
+                        </select>
+                    </form>
 
-                        <!-- form para filtrar filmes por paises -->
-                        <form id="filtrarPorPaisForm" style="display: inline;">
-                            <label for="pais">País:</label>
-                            <select name="pais" id="pais">
-                                <option value="">Todos</option>
-                                @foreach ($paises as $pais)
-                                    <option value="{{ $pais->pais }}">{{ $pais->pais }}</option>
-                                @endforeach
-                            </select>
-                        </form>                
+                    <!-- form para filtrar filmes por paises -->
+                    <form id="filtrarPorPaisForm" style="display: inline;">
+                        <label for="pais">País:</label>
+                        <select name="pais" id="pais">
+                            <option value="">Todos</option>
+                            @foreach ($paises as $pais)
+                                <option value="{{ $pais->pais }}">{{ $pais->pais }}</option>
+                            @endforeach
+                        </select>
+                    </form>                
                 </center>
 
                 
@@ -457,7 +457,7 @@
             <!-- Javascript - necessário para ordenar filmes por user rating ASC e DESC -->
             <script>
                  document.getElementById('ordenarUserRating').addEventListener('change', function () {
-                    const ordenacaoUserRating = this.value; // verifique se o nome da variável está correto
+                    const ordenacaoUserRating = this.value; 
 
                     const ufilmes = Array.from(document.querySelectorAll('.filme-item'));
 

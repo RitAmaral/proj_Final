@@ -32,13 +32,8 @@
             z-index: -1;
       }
 
-      .container {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-      }
-
       h1{
-        border-bottom: 2px solid #E4A063;
+        border-bottom: 2px solid white;
         padding: 10px;
         color: #E4A063;
       }
@@ -89,7 +84,7 @@
     </style>
   </head>
   <body>
-    <main class="container">
+    <main>
 
     <canvas id="particle-canvas"></canvas> <!-- background animado -->
 

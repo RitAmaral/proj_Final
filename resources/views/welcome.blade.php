@@ -6,7 +6,7 @@
        
         <link rel="icon" href="{{ asset('icons/movieicon.png') }}"> <!-- icon do website-->
 
-        <title>Sugestões de Filmes</title>
+        <title>Sugestões de Filmes</title> <!-- titulo do website-->
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -47,7 +47,8 @@
         .btnlogin:hover{
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
             text-decoration: none;
-            color: black;
+            color: #C960A5;
+            background-color: white;
         }
 
         /* Design do Botão registar/perfil */
@@ -64,7 +65,8 @@
         .btnregister:hover{
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
             text-decoration: none;
-            color: black;
+            color: #D66D48;
+            background-color: white;
         }
 
         h1{
@@ -146,6 +148,7 @@
 
         </style>
     </head>
+
     <body>
     <canvas id="particle-canvas"></canvas> <!-- background animado -->
 
@@ -198,7 +201,7 @@
 
             <br><br><br>
             <br>
-            @if(auth()->check() && auth()->user()->role === 'admin')
+            @if(auth()->check() && auth()->user()->role === 'admin') <!-- só visto por admins-->
                 <div>
                     <a type='button' class="btnfilme" href="{{ route('user.index') }}">Utilizadores homepage</a> <!--botão user-->
                 </div>
@@ -214,7 +217,7 @@
 
         <br><br>
 
-        <!-- carousel de filmes -->
+        <!-- carousel de filmes / posters exibidos na pagina inicial -->
         <center>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">

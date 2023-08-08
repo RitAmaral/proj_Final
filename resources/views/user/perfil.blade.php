@@ -1,6 +1,3 @@
-<!-- Ir à pagina https://getbootstrap.com/docs/4.2/getting-started/introduction/ (v4.2), copiar e colocar o starter template em baixo-->
-<!--o link deste site é: http://localhost:8000/users -->
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,7 +10,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>Perfil do Utilizador</title>
+    <title>Perfil do Utilizador</title> <!-- titulo da pagina-->
+
     <style>
 
       /* body{
@@ -145,7 +143,7 @@
             font-weight: bold;
         }
 
-        /* botao voltar ao topo*/
+        /* botao voltar ao topo */
         .topo {
             position: fixed;
             bottom: 20px; 
@@ -184,18 +182,20 @@
 
           <br>
 
+          <!-- user logado pode editar o seu nome e email-->
           @auth
               <center><a href="{{ route('user.edit', ['id' => Auth::user()->id]) }}" class="btn edit pulser">Editar Informação</a></center>
           @endauth
           <br>
 
-          <!-- informação do utilizador -->
+            <!-- informação do utilizador -->
             <h2>👤 Informações do Utilizador</h2>
             <p><b>Nome:</b> {{ $user->name }}</p>
             <p><b>Email:</b> {{ $user->email }}</p>
 
             <br>
 
+            <!-- intervenientes preferidos -->
             <h2>⭐ Intervenientes Preferidos</h2>
             @if ($user->intervenientesPreferidos !== null && !$user->intervenientesPreferidos->isEmpty())
                 <ul>
@@ -264,7 +264,7 @@
             return Math.random() * (high - low) + low;
             }
 
-            function createParticle(canvas) {
+            function createParticle(canvas) { //mudar cor das particulas
             const colour = {
                 r: 255,
                 g: randomNormal({ mean: 125, dev: 20 }),
