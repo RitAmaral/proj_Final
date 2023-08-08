@@ -342,7 +342,7 @@
                                 </td>    
                                 <td><a href="{{ $filme->link_imdb }}" target="_blank" class="imdbbutton">IMDb</a></td>
                                 <td>
-                                    <a type='button' class="btn btn-success" href="{{ route('filme.show', $filme->id_filme)}}">🛈</a> <!--ir à route, e está lá user.show; buscar aos users o id-->
+                                    <a type='button' class="btn btn-success" href="{{ route('filme.show', $filme->id_filme)}}">🔎</a> <!--ir à route, e está lá user.show; buscar aos users o id-->
                                 </td>
                                 @if(auth()->check() && auth()->user()->role === 'admin') <!-- só admins têm acesso a editar e eliminar-->
                                     <td>
@@ -395,7 +395,7 @@
                     const filmes = Array.from(document.querySelectorAll('.filme-item'));
 
                     filmes.sort(function (a, b) {
-                        const tituloA = a.querySelector('td:nth-child(1)').textContent.toLowerCase();
+                        const tituloA = a.querySelector('td:nth-child(1)').textContent.toLowerCase(); //ordena a coluna 1, onde estao os titulos dos filmes
                         const tituloB = b.querySelector('td:nth-child(1)').textContent.toLowerCase();
 
                         if (ordenacao === 'asc') {
@@ -417,7 +417,7 @@
                     const filmes = Array.from(document.querySelectorAll('.filme-item'));
 
                     filmes.sort(function (a, b) {
-                        const anoA = parseFloat(a.querySelector('.filme-ano').textContent);
+                        const anoA = parseFloat(a.querySelector('.filme-ano').textContent); //colocar a class filme-ano na tabela na parte do ano
                         const anoB = parseFloat(b.querySelector('.filme-ano').textContent);
 
                         if (ordenacaoAno === 'asc') {

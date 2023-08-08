@@ -134,7 +134,7 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->created_at}}</td>
                     <td>
-                        <a type='button' class="btn btn-success" href="{{ route('user.show', $user->id)}}">🛈</a> <!--ir à route, e está lá user.show; buscar aos users o id-->
+                        <a type='button' class="btn btn-success" href="{{ route('user.show', $user->id)}}">🔎</a> <!--ir à route, e está lá user.show; buscar aos users o id-->
                     </td>
                     <td>
                         <a type='button' class="btn btn-primary" href="{{ route('user.edit', $user->id)}}">✏️</a>

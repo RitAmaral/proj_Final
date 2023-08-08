@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
+        'role', //acrescentar na base de dados a coluna role (user ou admin)
     ];
 
     /**

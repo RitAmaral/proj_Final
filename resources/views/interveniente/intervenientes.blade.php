@@ -267,7 +267,7 @@
                                 @endif
                             </td>
                             <td>
-                            <a type='button' class="btn btn-success" href="{{ route('interveniente.show', $interveniente->id_interveniente)}}">🛈</a> 
+                            <a type='button' class="btn btn-success" href="{{ route('interveniente.show', $interveniente->id_interveniente)}}">🔎</a> 
                             </td> 
                         </tr>
                     @endforeach

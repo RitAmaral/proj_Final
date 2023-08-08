@@ -22,7 +22,7 @@ class NewUserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            //para editar usar queremos editar nome e email
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255'
         ];

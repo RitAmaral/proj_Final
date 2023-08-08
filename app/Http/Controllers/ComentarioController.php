@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ComentarioController extends Controller
 {
-    //
+    // Comentario controller necessário para users criarem comentarios e para que sejam armazenados na base de dados e exibidos nos detalhes de filmes e perfil do user
     public function index($id_filme)
     {
         $comentarios = DB::table('tb_comentarios')

@@ -15,8 +15,7 @@ class Interveniente extends Model
 
     protected $fillable = ['interveniente', 'id_pais']; 
 
-    // Relacionamento com o modelo Filme (muitos para muitos)
-    
+    //relacionamento com o modelo Filme (muitos para muitos)  
     public function filmes()
     {
         return $this->belongsToMany(Filme::class, 'tb_detalhesfilmes', 'id_interveniente', 'id_filme');

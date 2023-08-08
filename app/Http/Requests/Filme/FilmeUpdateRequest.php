@@ -20,7 +20,7 @@ class FilmeUpdateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
-    public function rules(): array
+    public function rules(): array //regras para editar filme
     {
         return [
             //
@@ -33,7 +33,7 @@ class FilmeUpdateRequest extends FormRequest
             'link_imdb' => 'string'
         ];
     }
-    public function messages()
+    public function messages() //mensagens que vão aparecer caso as regras não sejam seguidas
     {
         return [
             'titulo.required'=>'O campo título é obrigatório',

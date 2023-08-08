@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserRatingController extends Controller
 {
-    //guardar user rating
-    
+    //guardar user rating num determinado filme
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -19,7 +18,7 @@ class UserRatingController extends Controller
         ]);
     
         $id_filme = $validatedData['id_filme'];
-        $user_id = auth()->id();
+        $user_id = auth()->id(); //user precisa de tar logado
         $user_rating = $validatedData['user_rating'];
     
         $rating = new UserRating();
@@ -28,7 +27,7 @@ class UserRatingController extends Controller
         $rating->user_rating = $user_rating;
         $rating->save();
     
-        return redirect()->route('filme.index');
+        return redirect()->route('filme.index'); //voltar para filmes homepage
     }
 
 }

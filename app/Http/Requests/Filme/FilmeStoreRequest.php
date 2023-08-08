@@ -12,7 +12,7 @@ class FilmeStoreRequest extends FormRequest
     public function authorize(): bool
     {
         //Auth::check(); //Isto é usado para só as pessoas autorizadas alterarem ou criarem dados ou remover; depois é preciso programar o check
-        return true;
+        return true; //posso fazer isto porque escondi os botoes dos users normais
 
     }
 

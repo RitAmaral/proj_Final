@@ -9,7 +9,7 @@ class IntervPreferido extends Model
 {
     use HasFactory;
 
-    protected $table = 'tb_interv_preferidos';
+    protected $table = 'tb_interv_preferidos'; //tabela dos intervenientes preferidos, contem o id do user e o id do interveniente
     protected $fillable = ['id', 'id_interveniente']; //id é o id do user
 
     public $timestamps = false;
