@@ -40,7 +40,6 @@
       h1{
         border-bottom: 2px solid #E4A063;
         padding: 10px;
-        text-shadow: 5px 5px 10px #E4A063;
         color: #E4A063;
       }
 

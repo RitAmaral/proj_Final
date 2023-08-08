@@ -224,9 +224,9 @@
 
             function createParticle(canvas) {
             const colour = {
-                r: 255,
-                g: randomNormal({ mean: 125, dev: 20 }),
-                b: 50,
+                r: 201,
+                g: randomNormal({ mean: 100, dev: 25 }),
+                b: 165,
                 a: rand(0, 1),
             };
             return {
