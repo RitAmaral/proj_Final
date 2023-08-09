@@ -299,8 +299,11 @@
                 <!-- tabela de filmes -->
                 <center>
                     <br>
-                    <a type='button' class="btn add pulser" href="{{route('filme.create')}}">Adicionar Filme</a>
-                    <br><br>
+                    @if(auth()->check() && auth()->user()->role === 'admin') <!-- só visto por admins-->
+                        <a type='button' class="btn add pulser" href="{{route('filme.create')}}">Adicionar Filme</a>
+                        <br>
+                    @endif    
+                    <br>
                     <table class="table">
                         <thead>
                             <tr class="hover">

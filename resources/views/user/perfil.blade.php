@@ -151,7 +151,7 @@
             z-index: 9999; 
             padding:5px;
             background-color: white;
-            color: #191970;
+            color: #E4A063;
             border-radius: 5px;
             font-size: 16px;
             border: 2px solid #E4A063;
