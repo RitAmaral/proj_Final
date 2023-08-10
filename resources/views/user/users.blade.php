@@ -110,11 +110,17 @@
 
         <!-- form para pesquisar utilizadores -->
         <center>
-            <label for="pesquisar" style="margin: 10px;">Pesquisar:</label>
-            <input type="text" id="searchInput" placeholder="Pesquisar utilizadores..."  style="width: 400px;"> 
+            <label for="pesquisar" style="margin: 10px;">Pesquisar por nome:</label>
+            <input type="text" id="searchInput" placeholder="Pesquisar utilizadores por nome..."  style="width: 400px;"> 
         </center>
 
-        <br>
+        <!-- form para pesquisar utilizadores -->
+        <center>
+            <label for="pesquisarEmail" style="margin: 10px;">Pesquisar por email:</label>
+            <input type="text" id="searchInputEmail" placeholder="Pesquisar utilizadores por email..."  style="width: 400px;"> 
+        </center>
+
+        <br>       
 
         <table class="table">
             <thead>
@@ -122,6 +128,7 @@
                     <th scope="col">🆔</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Email 📧</th>
+                    <th scope="col">Cargo</th>
                     <th scope="col">Criado em</th>
                     <th colspan=3><center>Ações</center></th>
                 </tr>
@@ -132,6 +139,7 @@
                     <th scope="row">{{$user->id}}</th> <!--id, name, email, created_at são os dados que aparecerem no mysql-->
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
+                    <td>{{$user->role}}</td>
                     <td>{{$user->created_at}}</td>
                     <td>
                         <a type='button' class="btn btn-success" href="{{ route('user.show', $user->id)}}">🔎</a> <!--ir à route, e está lá user.show; buscar aos users o id-->
@@ -152,7 +160,7 @@
             </tbody>
         </table>
 
-        <!-- Javascript - necessário para a pesquisa de utilizadores ir diminuindo  -->
+        <!-- Javascript - necessário para a pesquisa de utilizadores por nome ir diminuindo  -->
         <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     const searchInput = document.getElementById('searchInput'); //mesmo id do form
@@ -164,6 +172,27 @@
                         utilizadorItems.forEach(item => {
                             const nomeUtilizador = item.querySelector('td:nth-child(2)').textContent.toLowerCase(); //2ª linha da tabela
                             if (nomeUtilizador.includes(searchTerm)) {
+                                item.style.display = ''; //exibir a linha
+                            } else {
+                                item.style.display = 'none'; //ocultar a linha
+                            }
+                        });
+                    });
+                });
+        </script>
+
+        <!-- Javascript - necessário para a pesquisa de utilizadores por email ir diminuindo  -->
+        <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const searchInput = document.getElementById('searchInputEmail'); //mesmo id do form
+                    const utilizadorItems = document.querySelectorAll('.utilizadores-item'); //colocar class na tabela
+
+                    searchInput.addEventListener('input', function (event) {
+                        const searchTerm = event.target.value.trim().toLowerCase();
+
+                        utilizadorItems.forEach(item => {
+                            const emailUtilizador = item.querySelector('td:nth-child(3)').textContent.toLowerCase(); //3ª linha da tabela corresponde ao email
+                            if (emailUtilizador.includes(searchTerm)) {
                                 item.style.display = ''; //exibir a linha
                             } else {
                                 item.style.display = 'none'; //ocultar a linha

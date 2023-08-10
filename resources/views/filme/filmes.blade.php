@@ -253,7 +253,7 @@
                         <label for="genero">Género:</label>
                         <select name="genero" id="genero">
                             <option value="">Todos</option>
-                            @foreach ($generos->unique('genero') as $genero) <!-- unique é para o nome do genero aparecer apenas 1x -->
+                            @foreach ($generos->unique('genero')->sortBy('genero') as $genero) <!-- unique é para o nome do genero aparecer apenas 1x, sort by para ASC -->
                                 <option value="{{ $genero->genero }}">{{ $genero->genero }}</option>
                             @endforeach
                         </select>
@@ -266,7 +266,7 @@
                         <label for="plataforma">Plataforma:</label>
                         <select name="plataforma" id="plataforma">
                             <option value="">Todos</option>
-                            @foreach ($plataformas as $plataforma)
+                            @foreach ($plataformas->sortBy('plataforma') as $plataforma)
                                 <option value="{{ $plataforma->plataforma }}">{{ $plataforma->plataforma }}</option>
                             @endforeach
                         </select>
@@ -459,7 +459,7 @@
 
             <!-- Javascript - necessário para ordenar filmes por user rating ASC e DESC -->
             <script>
-                 document.getElementById('ordenarUserRating').addEventListener('change', function () {
+                 document.getElementById('userRating').addEventListener('change', function () {
                     const ordenacaoUserRating = this.value; 
 
                     const ufilmes = Array.from(document.querySelectorAll('.filme-item'));
@@ -469,9 +469,9 @@
                         const uratingB = parseFloat(b.querySelector('.user-rating').textContent);
 
                         if (ordenacaoUserRating === 'asc') {
-                            return uratingA - uratingB; // ordena por menor rating (ASC)
+                            return uratingA - uratingB; //ordena por menor rating (ASC)
                         } else {
-                            return uratingB - uratingA; // ordena por maior rating (DESC)
+                            return uratingB - uratingA; //ordena por maior rating (DESC)
                         }
                     });
 

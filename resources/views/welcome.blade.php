@@ -108,7 +108,7 @@
             border: 2px solid #D66D48;
             text-decoration: none;
             color: white;
-            background-color: #D66D48;
+            background-color: rgba(214, 109, 72, 0.8); /* transparencia 0.8 */
             padding: 7px;
             border-radius: 5px;
             position: absolute;
@@ -117,7 +117,7 @@
 
         .btnfilme:hover{
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9);
             border: 2px solid #D66D48;
             color: #D66D48;
             text-decoration: none;
