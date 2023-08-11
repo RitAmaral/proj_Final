@@ -224,6 +224,14 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="10"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -239,6 +247,46 @@
                     <div class="carousel-item">
                         <a href="{{ route('filme.show', ['id_filme' => 11]) }}">
                             <img src="http://localhost/proj_Final/Imagens/lalaland.png" class="d-block w-40" alt="Póster de La La Land">
+                        </a> 
+                    </div>
+                    <div class="carousel-item">
+                        <a href="{{ route('filme.show', ['id_filme' => 202]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/dune.png" class="d-block w-40" alt="Póster de Dune">
+                        </a> 
+                    </div>
+                    <div class="carousel-item">
+                        <a href="{{ route('filme.show', ['id_filme' => 260]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/hp8.png" class="d-block w-40" alt="Póster de Harry Potter">
+                        </a> 
+                    </div>
+                    <div class="carousel-item">
+                        <a href="{{ route('filme.show', ['id_filme' => 269]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/avatar.png" class="d-block w-40" alt="Póster de Avatar">
+                        </a> 
+                    </div>
+                    <div class="carousel-item">
+                        <a href="{{ route('filme.show', ['id_filme' => 287]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/hg1.png" class="d-block w-40" alt="Póster de Hunger Games">
+                        </a> 
+                    </div>
+                    <div class="carousel-item">
+                        <a href="{{ route('filme.show', ['id_filme' => 296]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/bp1.png" class="d-block w-40" alt="Póster de Black Phanter">
+                        </a> 
+                    </div>
+                    <div class="carousel-item">
+                        <a href="{{ route('filme.show', ['id_filme' => 23]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/mammamia2.png" class="d-block w-40" alt="Póster de Mamma Mia">
+                        </a> 
+                    </div>
+                    <div class="carousel-item">
+                        <a href="{{ route('filme.show', ['id_filme' => 98]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/inception.png" class="d-block w-40" alt="Póster de Inception">
+                        </a> 
+                    </div>
+                    <div class="carousel-item">
+                        <a href="{{ route('filme.show', ['id_filme' => 129]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/coco.png" class="d-block w-40" alt="Póster de Coco">
                         </a> 
                     </div>
                 </div>
