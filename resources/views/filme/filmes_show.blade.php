@@ -116,12 +116,12 @@
             padding: 0;
         }
 
-        .comentario-item {
+        /* .comentario-item {
             margin-bottom: 20px; 
             border: 1px solid #ddd; 
             padding: 10px;
             background-color: #f9f9f9; 
-        }
+        } */
 
         /* Design do botão enviar comentario e classificação */
         .btnenviar{
@@ -208,20 +208,14 @@
                     @else
                         <ul class="list-unstyled">
                             @foreach ($comentarios as $comentario)
-                            <li class="comentario-item">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p><b>Por:</b> {{ $comentario->name }}</p>
-                                    </div>
-                                    <div class="col-md-6 text-md-end">
-                                        <p><b>Data e Hora:</b> {{ $comentario->data_hora }}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p><b>Comentário:</b> {{ $comentario->comentario }}</p>
-                                    </div>
-                                </div>
+                            <li>
+                                <div class="card border-dark mb-3" style="max-width: 34rem; background-color: rgba(255, 255, 255, 0.7);">
+                                    <div class="card-header bg-transparent border-dark"><b>Por: </b>{{ $comentario->name }}</div>
+                                        <div class="card-body text-success">
+                                            <p class="card-text" style="color:#C960A5;">{{ $comentario->comentario }}</p>
+                                        </div>
+                                    <div class="card-footer bg-transparent border-dark"><b>Data e Hora: </b>{{ $comentario->data_hora }}</div>
+                                </div>                        
                             </li>
                             @endforeach
                         </ul>

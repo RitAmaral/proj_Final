@@ -220,11 +220,15 @@
             @else
                 <ul class="list-unstyled">
                     @foreach ($comentarios as $comentario)
-                        <li class="comentario-item">
-                            <p><b>Data e Hora:</b> {{ $comentario->data_hora }}</p>
-                            <p><b>Filme:</b> <a href="{{ route('filme.show', $comentario->id_filme) }}" target="_blank">{{ $comentario->filme->titulo }}</a></p>
-                            <p><b>Comentário:</b> {{ $comentario->comentario }}</p>
-                            <br>
+                        <li>
+                            <div class="card border-dark mb-3" style="max-width: 34rem; background-color: rgba(255, 255, 255, 0.7);">
+                                <div class="card-header bg-transparent border-dark"><b>Filme: </b><a href="{{ route('filme.show', $comentario->id_filme) }}" target="_blank">{{ $comentario->filme->titulo }}</a></div>
+                                    <div class="card-body text-success">
+                                        <p class="card-text" style="color:#E4A063;">{{ $comentario->comentario }}</p>
+                                    </div>
+                                <div class="card-footer bg-transparent border-dark"><b>Data e Hora: </b>{{ $comentario->data_hora }}</div>
+                            </div>  
+                        <br>
                         </li>
                     @endforeach
                 </ul>

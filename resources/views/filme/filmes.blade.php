@@ -532,7 +532,7 @@
                         }
                     });
                 });
-            </script>
+            </script>        
 
             <!-- Javascript - necessário para selecionar filmes por pais -->
             <script>
