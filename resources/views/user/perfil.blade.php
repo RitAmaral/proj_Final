@@ -176,7 +176,7 @@
     <nav class="nav"> <!-- navigation bar -->
         <a class="nav-link active" style="color:#E4A063;" href="/">Página Inicial</a>
         @auth
-            <a class="nav-link" style="color:#E4A063;" href="{{ route('perfil') }}">Perfil</a> <!-- se tiver logado-->
+            <a class="nav-link" style="color:white; font-weight:bold;" href="{{ route('perfil') }}">Perfil</a> <!-- se tiver logado-->
         @endauth
         <a class="nav-link" style="color:#E4A063;" href="{{route('filme.index')}}">Filmes</a>
         <a class="nav-link" style="color:#E4A063;" href="{{route('interveniente.index')}}">Intervenientes</a>

@@ -206,7 +206,7 @@
                 <a class="nav-link" style="color:#C960A5;" href="{{ route('perfil') }}">Perfil</a> <!-- se tiver logado-->
             @endauth
             <a class="nav-link" style="color:#C960A5;" href="{{route('filme.index')}}">Filmes</a>
-            <a class="nav-link" style="color:#C960A5;" href="{{route('interveniente.index')}}">Intervenientes</a>
+            <a class="nav-link" style="color:white; font-weight:bold;" href="{{route('interveniente.index')}}">Intervenientes</a>
             @if(auth()->check() && auth()->user()->role === 'admin') <!-- só visto por admins-->
                 <a class="nav-link" style="color:#C960A5;" href="{{route('user.index')}}">Utilizadores</a>
             @endif 
