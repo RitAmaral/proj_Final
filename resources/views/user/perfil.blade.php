@@ -172,11 +172,18 @@
 
     <canvas id="particle-canvas"></canvas> <!-- background animado -->
 
-      <div class="back">
-            <a type="button" href="/" class="btnback"> <!-- voltar à homepage-->
-                <i class="icon"></i>               
-            </a>
-        </div>
+    <nav class="nav"> <!-- navigation bar -->
+        <a class="nav-link active" style="color:#E4A063;" href="/">Página Inicial</a>
+        @auth
+            <a class="nav-link" style="color:#E4A063;" href="{{ route('perfil') }}">Perfil</a> <!-- se tiver logado-->
+        @endauth
+        <a class="nav-link" style="color:#E4A063;" href="{{route('filme.index')}}">Filmes</a>
+        <a class="nav-link" style="color:#E4A063;" href="{{route('interveniente.index')}}">Intervenientes</a>
+        @if(auth()->check() && auth()->user()->role === 'admin') <!-- só visto por admins-->
+            <a class="nav-link" style="color:#E4A063;" href="{{route('user.index')}}">Utilizadores</a>
+        @endif 
+    </nav>
+
         <div class="container">
           <center><h1>Perfil do Utilizador</h1></center>
 

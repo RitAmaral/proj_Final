@@ -154,26 +154,26 @@
 
         <!-- se o user tiver logado, vão aparecer botões logout e perfil, se não vão aparecer login e register-->
         @if (Route::has('login'))
-                <div class="login">
-                    @auth                        
-                    @else
-                        <a href="{{ route('login') }}" class="btnlogin">Login</a> <!--botão login-->
+            <div class="login">
+                @auth                        
+                @else
+                    <a href="{{ route('login') }}" class="btnlogin">Login</a> <!--botão login-->
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="btnregister">Register</a> <!--botão registar-->
-                        @endif
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="btnregister">Register</a> <!--botão registar-->
+                    @endif
+                @endauth
+
+                <div class="login" style="display: flex;">
+                    @auth
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btnlogin">Logout</button>
+                        </form>
+                        <a href="{{ route('perfil') }}" class="btnregister" style="margin-left: 10px;">Perfil</a>
                     @endauth
-
-                    <div class="login" style="display: flex;">
-                        @auth
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btnlogin">Logout</button>
-                            </form>
-                            <a href="{{ route('perfil') }}" class="btnregister" style="margin-left: 10px;">Perfil</a>
-                        @endauth
-                    </div>
                 </div>
+            </div>
         @endif
         
         <center><h1>Bem-vindo!</h1></center>

@@ -114,19 +114,33 @@
             margin-right: 22px;
             margin-left: 22px;
         }
+
+        /* quando passo por cima de links */
+        a:hover{
+            color: #E4A063;
+            text-decoration: none;
+            font-weight: bold;
+        }
         
         </style>
     </head>
     <body>
 
     <canvas id="particle-canvas"></canvas> <!-- background animado -->
-    <div class="container">
 
-        <div class="back">
-            <a type="button" href="{{ route('filme.index') }}" class="btnback"> <!-- voltar aos filmes page-->
-                <i class="icon"></i>      
-            </a>  
-        </div>
+    <nav class="nav"> <!-- navigation bar -->
+            <a class="nav-link active" style="color:#C960A5;" href="/">Página Inicial</a>
+            @auth
+                <a class="nav-link" style="color:#C960A5;" href="{{ route('perfil') }}">Perfil</a> <!-- se tiver logado-->
+            @endauth
+            <a class="nav-link" style="color:#C960A5;" href="{{route('filme.index')}}">Filmes</a>
+            <a class="nav-link" style="color:#C960A5;" href="{{route('interveniente.index')}}">Intervenientes</a>
+            @if(auth()->check() && auth()->user()->role === 'admin') <!-- só visto por admins-->
+                <a class="nav-link" style="color:#C960A5;" href="{{route('user.index')}}">Utilizadores</a>
+            @endif 
+        </nav>
+
+    <div class="container">
 
         <center>
             <h1>Editar Filme</h1>
