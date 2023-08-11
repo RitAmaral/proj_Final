@@ -19,8 +19,9 @@
       } */
 
       h1{
-        border-bottom: 2px solid #E4A063;
+        border-bottom: 2px solid white;
         padding: 10px;
+        color: #E4A063;
       }
 
       /* Design do hover / quando passamos por cima do h1 e do cabeçalho da tabela */ 
