@@ -153,6 +153,14 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        /* barra de navegação */
+        nav{
+            position: fixed;
+            background-color: #0C0A33;
+            width: 100%;
+            z-index: 100;
+        }
         
         </style>
     </head>
@@ -170,7 +178,7 @@
                 <a class="nav-link" style="color:#C960A5;" href="{{route('user.index')}}">Utilizadores</a>
             @endif 
         </nav>
-
+            <br>
             <center>
                 <h1>Detalhes do Filme</h1>
             </center>
@@ -227,7 +235,7 @@
                                         <div class="card-body text-success">
                                             <p class="card-text" style="color:#C960A5;">{{ $comentario->comentario }}</p>
                                         </div>
-                                    <div class="card-footer bg-transparent border-dark"><b>Data e Hora: </b>{{ $comentario->data_hora }}</div>
+                                    <small><div class="card-footer bg-transparent border-dark"><b>Data e Hora: </b>{{ $comentario->data_hora }}</div></small>
                                 </div>                        
                             </li>
                             @endforeach

@@ -77,8 +77,8 @@
 
          /* Design do icon da homepage*/
         .icon {
-            width: 24px; /* Defina a largura desejada para o ícone */
-            height: 24px; /* Defina a altura desejada para o ícone */
+            width: 24px; 
+            height: 24px; 
             background-image: url("{{ asset('icons/homepage.png') }}");
             background-size: cover;
             background-repeat: no-repeat;
@@ -96,6 +96,14 @@
             color: #E4A063;
             text-decoration: none;
             font-weight: bold;
+        }
+
+        /* barra de navegação */
+        nav{
+            position: fixed;
+            background-color: #0C0A33;
+            width: 100%;
+            z-index: 100;
         }
 
     </style>
@@ -119,6 +127,7 @@
 
     <main class="container">
 
+    <br>
         <center><h1>Utilizadores na nossa base de dados</h1></center>
 
         <br>

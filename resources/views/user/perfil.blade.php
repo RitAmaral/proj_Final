@@ -165,6 +165,14 @@
             color: white;
         }
 
+        /* barra de navegação */
+        nav{
+            position: fixed;
+            background-color: #0C0A33;
+            width: 100%;
+            z-index: 100;
+        }
+
     </style>
   </head>
 
@@ -186,6 +194,7 @@
     </nav>
 
         <div class="container">
+        <br>
           <center><h1>Perfil do Utilizador</h1></center>
 
           <br>
@@ -234,7 +243,7 @@
                                     <div class="card-body text-success">
                                         <p class="card-text" style="color:#E4A063;">{{ $comentario->comentario }}</p>
                                     </div>
-                                <div class="card-footer bg-transparent border-dark"><b>Data e Hora: </b>{{ $comentario->data_hora }}</div>
+                                <small><div class="card-footer bg-transparent border-dark"><b>Data e Hora: </b>{{ $comentario->data_hora }}</div></small>
                             </div>  
                         <br>
                         </li>
@@ -248,7 +257,7 @@
                 <p>Nenhum rating encontrado.</p>
             @else
                 <ul class="list-unstyled">
-                    @foreach ($userRatings as $userRating)
+                    @foreach ($userRatings->sortByDesc('user_rating') as $userRating)
                         <li class="userating-item">
                             <p><b>Filme:</b> <a href="{{ route('filme.show', $userRating->id_filme) }}" target="_blank">{{ $userRating->titulo }}</a></p>
                             <p><b>User Rating:</b> {{ $userRating->user_rating }} ⭐</p>

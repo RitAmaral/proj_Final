@@ -190,6 +190,14 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        /* barra de navegação */
+        nav{
+            position: fixed;
+            background-color: #0C0A33;
+            width: 100%;
+            z-index: 100;
+        }
         
         </style>
     </head>
@@ -211,7 +219,7 @@
         </nav>
 
         <div class="container">
-
+            <br>
                 <center>
                     <h1>A nossa base de dados de filmes</h1>
                 </center>

@@ -159,6 +159,14 @@
             background-color: #fff;
             color:#C960A5;
         }
+
+        /* barra de navegação */
+        nav{
+            position: fixed;
+            background-color: #0C0A33;
+            width: 100%;
+            z-index: 100;
+        }
         
         </style>
     </head>
@@ -178,6 +186,7 @@
         @endif 
     </nav>
 
+    <br>
         <center>
             <h1>Detalhes do Interveniente</h1>
         </center>

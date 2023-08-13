@@ -280,13 +280,13 @@
                         </a> 
                     </div>
                     <div class="carousel-item">
-                        <a href="{{ route('filme.show', ['id_filme' => 98]) }}">
-                            <img src="http://localhost/proj_Final/Imagens/inception.png" class="d-block w-40" alt="Póster de Inception">
+                        <a href="{{ route('filme.show', ['id_filme' => 299]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/knives.png" class="d-block w-40" alt="Póster de Knives Out">
                         </a> 
                     </div>
                     <div class="carousel-item">
-                        <a href="{{ route('filme.show', ['id_filme' => 129]) }}">
-                            <img src="http://localhost/proj_Final/Imagens/coco.png" class="d-block w-40" alt="Póster de Coco">
+                        <a href="{{ route('filme.show', ['id_filme' => 302]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/topg.png" class="d-block w-40" alt="Póster de Top Gun: Maverick">
                         </a> 
                     </div>
                 </div>
