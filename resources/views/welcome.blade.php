@@ -232,6 +232,7 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="10"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="11"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -242,6 +243,11 @@
                     <div class="carousel-item">
                         <a href="{{ route('filme.show', ['id_filme' => 3]) }}">
                             <img src="http://localhost/proj_Final/Imagens/starwarsv.png" class="d-block w-40" alt="Póster de Star Wars V">
+                        </a>    
+                    </div>
+                    <div class="carousel-item">
+                        <a href="{{ route('filme.show', ['id_filme' => 304]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/aviw.png" class="d-block w-40" alt="Póster de Avengers: Infinity War">
                         </a>    
                     </div>
                     <div class="carousel-item">

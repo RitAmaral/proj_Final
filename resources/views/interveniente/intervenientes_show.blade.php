@@ -215,7 +215,7 @@
                 @endforeach
                 </p>
                 <p class="card-text"><b>Filmes em que participou:</b> <br>
-                    @foreach ($filmes as $filme)
+                    @foreach ($filmes->sortByDesc('ano') as $filme) <!-- sort by desc: ano ordenado do mais recentes a mais antigo -->
                         <p><a target=blank href="{{ route('filme.show', $filme->id_filme) }}">{{ $filme->titulo }}</a> - {{ $filme->ano }}<br></p>
                     @endforeach
                 </p>             

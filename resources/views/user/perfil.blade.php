@@ -257,7 +257,7 @@
                 <p>Nenhum rating encontrado.</p>
             @else
                 <ul class="list-unstyled">
-                    @foreach ($userRatings->sortByDesc('user_rating') as $userRating)
+                    @foreach ($userRatings->sortByDesc('user_rating') as $userRating) <!-- sort by desc: user rating ordenado do mais alto a mais baixo -->
                         <li class="userating-item">
                             <p><b>Filme:</b> <a href="{{ route('filme.show', $userRating->id_filme) }}" target="_blank">{{ $userRating->titulo }}</a></p>
                             <p><b>User Rating:</b> {{ $userRating->user_rating }} ⭐</p>
