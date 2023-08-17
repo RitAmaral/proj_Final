@@ -241,9 +241,9 @@
                         </a>
                     </div>    
                     <div class="carousel-item">
-                        <a href="{{ route('filme.show', ['id_filme' => 3]) }}">
-                            <img src="http://localhost/proj_Final/Imagens/starwarsv.png" class="d-block w-40" alt="Póster de Star Wars V">
-                        </a>    
+                        <a href="{{ route('filme.show', ['id_filme' => 316]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/mi7.png" class="d-block w-40" alt="Póster de Mission: Impossible - Dead Reckoning Part One">
+                        </a> 
                     </div>
                     <div class="carousel-item">
                         <a href="{{ route('filme.show', ['id_filme' => 304]) }}">
@@ -276,14 +276,14 @@
                         </a> 
                     </div>
                     <div class="carousel-item">
-                        <a href="{{ route('filme.show', ['id_filme' => 296]) }}">
-                            <img src="http://localhost/proj_Final/Imagens/bp1.png" class="d-block w-40" alt="Póster de Black Phanter">
-                        </a> 
-                    </div>
-                    <div class="carousel-item">
                         <a href="{{ route('filme.show', ['id_filme' => 23]) }}">
                             <img src="http://localhost/proj_Final/Imagens/mammamia2.png" class="d-block w-40" alt="Póster de Mamma Mia">
                         </a> 
+                    </div>
+                    <div class="carousel-item">
+                        <a href="{{ route('filme.show', ['id_filme' => 3]) }}">
+                            <img src="http://localhost/proj_Final/Imagens/starwarsv.png" class="d-block w-40" alt="Póster de Star Wars V">
+                        </a>    
                     </div>
                     <div class="carousel-item">
                         <a href="{{ route('filme.show', ['id_filme' => 299]) }}">
