@@ -8,4 +8,4 @@ No site "Sugestões de Filmes", é possível pesquisar filmes e intervenientes (
 
 
 ### Schema
-![modelschemaSQLProjFinalvfinal](https://github.com/RitAmaral/proj_Final/assets/132366922/71f662c6-5a04-48ba-a68d-4f8d6c77f84b)
+![modelschemaSQLProjFinalvfinal](https://github.com/RitAmaral/proj_Final/assets/132366922/9b83766b-2b82-49aa-8eb1-7befa51933b4)
